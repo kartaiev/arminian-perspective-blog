@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body, body>div {
+    height: 100vh;
+}
+
+
+.header {
+    @apply h-20 border-b border-gray-200 flex justify-center items-center fixed top-0 left-0 z-10 bg-white text-gray-600 transition duration-500
+}
+
+
+
