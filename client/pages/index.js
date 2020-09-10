@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Layout from "../components/layout/Layout";
 import client from "../client";
 import groq from "groq";
-import Link from "next/link";
-import { urlFor } from "../lib/helpers";
 import PostCard from "../components/PostCard";
+import { GlobalContext } from "../context/global.context";
 
 const App = ({ posts = [] }) => {
+  const { isOpened } = useContext(GlobalContext);
+
   const previews = posts.map(
     ({ _id, title = "", slug = "", _updatedAt = "", mainImage }) => (
       <PostCard
@@ -19,9 +20,12 @@ const App = ({ posts = [] }) => {
       />
     )
   );
+
   return (
     <Layout>
-      <div className="mx-4 mb-12 grid grid-cols-1 gap-6">{previews}</div>
+      {!isOpened && (
+        <div className="mx-4 mb-12 grid grid-cols-1 gap-6">{previews}</div>
+      )}
     </Layout>
   );
 };
