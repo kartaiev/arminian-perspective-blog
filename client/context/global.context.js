@@ -20,7 +20,7 @@ export const GlobalProvider = ({ children }) => {
 
   const links = Object.keys(pages).map((link) => {
     return (
-      <li className="pb-12 lg:pl-4 " key={link}>
+      <li className="pb-12 xl:pl-4 " key={link}>
         <Link href={link === "blog" ? "/" : `/${link}`}>
           <a>{pages[link]}</a>
         </Link>

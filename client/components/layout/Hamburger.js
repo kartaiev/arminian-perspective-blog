@@ -7,7 +7,7 @@ const Hamburger = () => {
   return (
     <button
       onClick={open}
-      className="h-full w-5 outline-none z-40 flex flex-col justify-center lg:hidden"
+      className="h-full w-5 outline-none z-40 flex flex-col justify-center xl:hidden"
     >
       <div className="h-mk w-full mb-1 bg-gray-600" />
       <div className="h-mk w-full mb-1 bg-gray-600" />
