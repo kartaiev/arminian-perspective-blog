@@ -19,6 +19,7 @@ const Header = () => {
   }, []);
 
   const shadow = isOpened || pos === "moved" ? "shadow-md" : "";
+
   return (
     <div className={`header ${shadow}`}>
       <div className="w-11/12 flex justify-between items-center">

@@ -7,16 +7,20 @@
 /*    height: 100vh;*/
 /*}*/
 
-/*body {*/
-/*    height: 100%;*/
-/*}*/
+body {
+    min-height: 100%;
+}
 
 .header {
     @apply h-16 w-full border-b border-gray-200 flex justify-center items-center fixed top-0 left-0 z-20 bg-white text-gray-600 transition duration-500
 }
 
+main {
+    min-height: calc(100vh - 10rem);
+}
+
 .footer {
-    @apply w-full h-12 mt-auto border-t border-gray-200 flex justify-center bg-white items-center
+    @apply w-full h-12 mt-8 border-t border-gray-200 flex justify-center bg-white items-center
 }
 
 

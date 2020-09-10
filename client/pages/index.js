@@ -12,10 +12,9 @@ const App = ({ posts = [] }) => {
     ({ _id, title = "", slug = "", _updatedAt = "", mainImage }) => (
       <PostCard
         key={_id}
-        _id={_id}
         title={title}
         slug={slug}
-        _updatedAt={_updatedAt}
+        updatedAt={_updatedAt}
         mainImage={mainImage}
       />
     )
@@ -24,7 +23,7 @@ const App = ({ posts = [] }) => {
   return (
     <Layout>
       {!isOpened && (
-        <div className="mx-4 mb-12 grid grid-cols-1 gap-6">{previews}</div>
+        <div className="mx-4 mb-6 grid grid-cols-1 gap-6">{previews}</div>
       )}
     </Layout>
   );
