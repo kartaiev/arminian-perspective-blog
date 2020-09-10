@@ -1,5 +1,17 @@
-const [Slug] = () => {
-  return <div>Post</div>;
+import React from "react";
+import { useRouter } from "next/router";
+import Layout from "../../components/layout/Layout";
+
+const Post = () => {
+  const router = useRouter();
+
+  return (
+    <Layout>
+      <article>
+        <h1>{router.query.slug}</h1>
+      </article>
+    </Layout>
+  );
 };
 
-export default [Slug];
+export default Post;

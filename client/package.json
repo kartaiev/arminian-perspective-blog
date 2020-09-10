@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@sanity/client": "^1.150.7",
     "framer-motion": "^2.6.10",
+    "groq": "^1.150.1",
     "next": "^9.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "tailwindcss": "^1.8.6"
   },
   "devDependencies": {
+    "@sanity/image-url": "^0.140.19",
     "postcss-preset-env": "^6.7.0"
   },
   "scripts": {
