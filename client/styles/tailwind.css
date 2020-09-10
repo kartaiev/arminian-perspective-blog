@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Montserrat:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +9,7 @@ body, body>div {
 
 
 .header {
-    @apply h-20 border-b border-gray-200 flex justify-center items-center fixed top-0 left-0 z-10 bg-white text-gray-600 transition duration-500
+    @apply h-16 w-full border-b border-gray-200 flex justify-center items-center fixed top-0 left-0 z-10 bg-white text-gray-600 transition duration-500
 }
 
 

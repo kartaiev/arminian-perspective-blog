@@ -1,10 +1,14 @@
-import Layout from "../components/Layout/Layout";
+import React from "react";
+import Layout from "../components/layout/Layout";
+import Drawer from "../components/layout/Drawer";
 
 const App = () => {
   return (
-    <Layout>
-      <div>Hello</div>
-    </Layout>
+    <>
+      <Layout>
+        <div>Hello</div>
+      </Layout>
+    </>
   );
 };
 
