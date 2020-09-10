@@ -12,7 +12,11 @@
 /*}*/
 
 .header {
-    @apply h-16 w-full border-b border-gray-200 flex justify-center items-center fixed top-0 left-0 z-10 bg-white text-gray-600 transition duration-500
+    @apply h-16 w-full border-b border-gray-200 flex justify-center items-center fixed top-0 left-0 z-20 bg-white text-gray-600 transition duration-500
+}
+
+.footer {
+    @apply w-full h-12 mt-auto border-t border-gray-200 flex justify-center bg-white items-center
 }
 
 
