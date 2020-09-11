@@ -12,8 +12,8 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const pages = {
-    blog: "блог",
-    about: "об этом блоге",
+    blog: "статьи",
+    about: "об этом сайте",
     statement: "утверждение веры",
     give: "поддержи проект",
   };

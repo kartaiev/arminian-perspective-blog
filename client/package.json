@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@sanity/client": "^1.150.7",
+    "date-fns": "^2.16.1",
     "framer-motion": "^2.6.10",
     "groq": "^1.150.1",
     "next": "^9.5.3",

@@ -1,6 +1,8 @@
 import React from "react";
 import { urlFor } from "../lib/helpers";
 import Link from "next/link";
+import { format } from "date-fns";
+import { ru } from "date-fns/locale";
 
 const PostCard = ({ slug, updatedAt, mainImage, title }) => {
   return (
@@ -20,7 +22,7 @@ const PostCard = ({ slug, updatedAt, mainImage, title }) => {
             <div className="px-4 py-2">
               <h1 className="font-bold text-gray-800">{title}</h1>
               <p className="pt-4 text-sm text-gray-600">
-                {new Date(updatedAt).toDateString()}
+                {format(new Date(updatedAt), "d MMM yyyy", { locale: ru })}
               </p>
             </div>
           </div>

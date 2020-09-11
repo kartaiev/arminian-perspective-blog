@@ -10,15 +10,12 @@ const Hamburger = () => {
     closed: { rotate: 0, y: 0 },
   };
 
-  const middleVariants = {
-    open: { opacity: 0 },
-    closed: { opacity: 1 },
-  };
-
   const bottomVariants = {
     open: { rotate: -45, y: -6 },
     closed: { rotate: 0, y: 0 },
   };
+
+  const visible = isOpened ? "invisible" : "visible";
 
   return (
     <button
@@ -30,11 +27,7 @@ const Hamburger = () => {
         variants={topVariants}
         className="h-mk w-full mb-1 bg-gray-600"
       />
-      <motion.div
-        animate={isOpened ? "open" : "closed"}
-        variants={middleVariants}
-        className="h-mk w-full mb-1 bg-gray-600"
-      />
+      <div className={`h-mk w-full mb-1 bg-gray-600  ${visible}`} />
       <motion.div
         animate={isOpened ? "open" : "closed"}
         variants={bottomVariants}
