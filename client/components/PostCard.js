@@ -4,12 +4,12 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
 
-const PostCard = ({ slug, updatedAt, mainImage, title }) => {
+const PostCard = ({ slug, updatedAt, mainImage, title, subtitle }) => {
   return (
     slug && (
       <Link href="/post/[slug]" as={`/post/${slug.current}`}>
-        <a>
-          <div className="rounded shadow overflow-hidden">
+        <a className="my-6">
+          <div className="overflow-hidden">
             {mainImage && (
               <div>
                 <img
@@ -19,11 +19,15 @@ const PostCard = ({ slug, updatedAt, mainImage, title }) => {
                 />
               </div>
             )}
-            <div className="px-4 py-2">
-              <h1 className="font-bold text-gray-800">{title}</h1>
-              <p className="pt-4 text-sm text-gray-600">
-                {format(new Date(updatedAt), "d MMM yyyy", { locale: ru })}
-              </p>
+            <div className="py-2">
+              <h1 className="py-4 font-bold text-gray-800">{title}</h1>
+              <p>{subtitle}</p>
+              <div className="py-4 flex justify-between text-sm text-gray-600">
+                <p>
+                  {format(new Date(updatedAt), "d MMM yyyy", { locale: ru })}
+                </p>
+                <p className="hover:text-gray-800">читать</p>
+              </div>
             </div>
           </div>
         </a>

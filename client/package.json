@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^1.150.7",
     "date-fns": "^2.16.1",
     "framer-motion": "^2.6.10",

@@ -1,37 +1,36 @@
-import React, { createContext, useState } from "react";
+import React, { createContext } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export const GlobalContext = createContext(undefined, undefined);
 
 export const GlobalProvider = ({ children }) => {
-  const [isOpened, setOpen] = useState(false);
+  const pathName = useRouter().pathname;
 
-  const open = () => {
-    setOpen(!isOpened);
-    console.log(isOpened);
-  };
+  const pages = [
+    { label: "статьи", path: "/" },
+    { label: "об этом сайте", path: "/about" },
+    { label: "утверждение веры", path: "/statement" },
+    { label: "поддержи проект", path: "/give" },
+  ];
 
-  const pages = {
-    blog: "статьи",
-    about: "об этом сайте",
-    statement: "утверждение веры",
-    give: "поддержи проект",
-  };
-
-  const links = Object.keys(pages).map((link) => {
+  const links = pages.map(({ label, path }) => {
     return (
-      <li onClick={open} className="pb-12 xl:pl-4 " key={link}>
-        <Link href={link === "blog" ? "/" : `/${link}`}>
-          <a>{pages[link]}</a>
+      <li
+        key={path}
+        className={
+          pathName === path ? "active" : "inactive hover:border-gray-300"
+        }
+      >
+        <Link href={path}>
+          <a>{label}</a>
         </Link>
       </li>
     );
   });
 
-  console.log(links);
-
   return (
-    <GlobalContext.Provider value={{ links, open, isOpened }}>
+    <GlobalContext.Provider value={{ links }}>
       {children}
     </GlobalContext.Provider>
   );

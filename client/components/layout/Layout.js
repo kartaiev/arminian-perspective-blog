@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "components/layout/Header";
+import Footer from "components/layout/Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex flex-col h-full">
+    <div className="min-h-screen px-6 flex flex-col font-primary">
       <Header />
-      <main className="mt-20 row-span-auto font-menu">{children}</main>
+      <main className="px-0 lg:px-20 flex flex-col flex-1">{children}</main>
       <Footer />
     </div>
   );

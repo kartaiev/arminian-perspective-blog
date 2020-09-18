@@ -1,18 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import Layout from "../components/layout/Layout";
-import client from "../client";
-import groq from "groq";
 import PostCard from "../components/PostCard";
-import { GlobalContext } from "../context/global.context";
+
+import { getAllPosts } from "../lib/api";
 
 const App = ({ posts = [] }) => {
-  const { isOpened } = useContext(GlobalContext);
-
   const previews = posts.map(
-    ({ _id, title = "", slug = "", _updatedAt = "", mainImage }) => (
+    ({
+      _id,
+      title = "",
+      subtitle = "",
+      slug = "",
+      _updatedAt = "",
+      mainImage,
+    }) => (
       <PostCard
         key={_id}
         title={title}
+        subtitle={subtitle}
         slug={slug}
         updatedAt={_updatedAt}
         mainImage={mainImage}
@@ -22,17 +27,18 @@ const App = ({ posts = [] }) => {
 
   return (
     <Layout>
-      {!isOpened && (
-        <div className="mx-4 mb-6 grid grid-cols-1 gap-6">{previews}</div>
-      )}
+      <div className="mb-6 grid grid-cols-1 gap-6">{previews}</div>
     </Layout>
   );
 };
 
-App.getInitialProps = async () => ({
-  posts: await client.fetch(groq`
-      *[_type == "post"]|order(publishedAt desc)
-    `),
-});
+export async function getStaticProps() {
+  const posts = await getAllPosts();
+  return {
+    props: {
+      posts,
+    },
+  };
+}
 
 export default App;

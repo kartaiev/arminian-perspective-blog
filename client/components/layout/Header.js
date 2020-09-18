@@ -1,34 +1,44 @@
-import React, { useContext, useEffect, useState } from "react";
-import Nav from "./Nav";
-import { GlobalContext } from "../../context/global.context";
+import React from "react";
+import Nav from "components/layout/Nav";
 
 const Header = () => {
-  const { isOpened } = useContext(GlobalContext);
-
-  const [pos, setPos] = useState("top");
-
-  useEffect(() => {
-    document.addEventListener("scroll", (e) => {
-      let scrolled = document.scrollingElement.scrollTop;
-      if (scrolled >= 5) {
-        setPos("moved");
-      } else {
-        setPos("top");
-      }
-    });
-  }, []);
-
-  const shadow = isOpened || pos === "moved" ? "shadow-md" : "";
-
   return (
-    <div className={`header ${shadow}`}>
-      <div className="w-11/12 flex justify-between items-center">
-        <div className="text-gray-900 font-bold text-2xl xl:text-5xl font-logo">
+    <>
+      <div className="h-24 border-b border-gray-300 flex items-center justify-between">
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          />
+        </svg>
+        <h1 className="uppercase text-gray-800 text-center text-xl lg:text-3xl font-bold">
           Арминианская перспектива
-        </div>
-        <Nav />
+        </h1>
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
       </div>
-    </div>
+      <Nav />
+    </>
   );
 };
 
