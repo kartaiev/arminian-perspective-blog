@@ -21,7 +21,6 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
   body
 }`;
 
-export const getSinglePost = async (context) => {
-  const { slug = "" } = context;
+export const getSinglePost = async (slug) => {
   return await client.fetch(query, { slug });
 };

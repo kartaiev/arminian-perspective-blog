@@ -30,7 +30,7 @@ export const GlobalProvider = ({ children }) => {
   });
 
   return (
-    <GlobalContext.Provider value={{ links }}>
+    <GlobalContext.Provider value={{ links, pathName }}>
       {children}
     </GlobalContext.Provider>
   );
