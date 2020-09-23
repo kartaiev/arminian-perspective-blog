@@ -1,6 +1,7 @@
-const client = require("contentful").createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
-});
+import sanityClient from "@sanity/client";
 
-export default client;
+export default sanityClient({
+  projectId: "l0ve09ch",
+  dataset: "production",
+  useCdn: true,
+});
