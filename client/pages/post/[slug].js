@@ -1,11 +1,12 @@
 import React from "react";
-import client from "lib/client";
 import BlockContent from "@sanity/block-content-to-react";
 import Layout from "components/layout/Layout";
 import { urlFor } from "lib/helpers";
 import { getSinglePost, getAllPosts } from "lib/api";
+import client from "../../lib/client";
 
 const Post = ({ post }) => {
+  console.log(post);
   return (
     <Layout>
       <article className="h-full mb-20">
@@ -18,22 +19,21 @@ const Post = ({ post }) => {
             />
           </div>
         )}
-        <div className="max-w-4xl p-8 mx-auto">
-          <h1 className="font-bold mb-6">{post.title}</h1>
-          <span>{post.name}</span>
-          {post.categories && (
-            <ul>
-              Posted in
-              {post.categories.map((category) => (
-                <li key={category}>{category}</li>
-              ))}
-            </ul>
-          )}
+        <div className="max-w-4xl  mx-auto">
+          <h1 className="font-bold text-2xl my-4">{post.title}</h1>
+          <span className="my-4">{post.name}</span>
           <BlockContent
-            blocks={post.body}
-            imageOptions={{ w: 320, h: 240, fit: "max" }}
+            className="my-4"
+            blocks={post.content}
             {...client.config()}
           />
+          {/*{post.categories && (*/}
+          {/*  <ul>*/}
+          {/*    {post.categories.map((category) => (*/}
+          {/*      <li key={category}>{category}</li>*/}
+          {/*    ))}*/}
+          {/*  </ul>*/}
+          {/*)}*/}
         </div>
       </article>
     </Layout>

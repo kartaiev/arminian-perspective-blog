@@ -16,9 +16,8 @@ export const getAllPosts = async () => {
 const query = groq`*[_type == "post" && slug.current == $slug][0]{
   title,
   "name": author->name,
-  "categories": categories[]->title,
   mainImage,
-  body
+  content
 }`;
 
 export const getSinglePost = async (slug) => {

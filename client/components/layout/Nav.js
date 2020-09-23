@@ -12,28 +12,21 @@ const Nav = () => {
   const { links } = useContext(GlobalContext);
 
   return (
-    <motion.div layout>
+    <div>
       <div className="h-10 lg:h-16 w-full border-b border-gray-300 flex items-center justify-center">
         <ul className="hidden w-1/3 h-full lg:flex items-center justify-between">
           {links}
         </ul>
-        <motion.button
-          layout
-          onClick={handleOpen}
-          className="lg:hidden  focus:outline-none"
-        >
+        <button onClick={handleOpen} className="lg:hidden  focus:outline-none">
           меню
-        </motion.button>
+        </button>
       </div>
       {opened && (
-        <motion.ul
-          layout
-          className="h-26 py-2 flex items-center justify-center flex-wrap border-b border-gray-300"
-        >
+        <ul className="h-26 py-2 flex items-center justify-center flex-wrap border-b border-gray-300">
           {links}
-        </motion.ul>
+        </ul>
       )}
-    </motion.div>
+    </div>
   );
 };
 

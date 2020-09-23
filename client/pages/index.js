@@ -5,6 +5,7 @@ import PostCard from "../components/PostCard";
 import { getAllPosts } from "../lib/api";
 
 const App = ({ posts = [] }) => {
+  console.log(posts);
   const previews = posts.map(
     ({
       _id,
