@@ -1,8 +1,7 @@
 import React from "react";
-import { urlFor } from "../lib/helpers";
 import Link from "next/link";
-import PublishedDate from "./PublishedDate";
 import PostCover from "./PostCover";
+import PostAuthorDate from "./PostAuthorDate";
 
 const PostCard = ({ slug, publishedAt, mainImage, title, subtitle }) => {
   return (
@@ -12,11 +11,8 @@ const PostCard = ({ slug, publishedAt, mainImage, title, subtitle }) => {
           {mainImage && <PostCover mainImage={mainImage} title={title} />}
           <div className="pt-8">
             <h1 className="font-bold text-gray-800 text-2xl">{title}</h1>
-            <p>{subtitle}</p>
-            <div className="py-2 flex justify-between text-sm text-gray-600">
-              <PublishedDate publishedAt={publishedAt} />
-              <span className="hover:text-gray-800">читать</span>
-            </div>
+            <h2 className="font-semibold text-gray-800 my-6">{subtitle}</h2>
+            <PostAuthorDate secondProp={""} publishedAt={publishedAt} />
           </div>
         </a>
       </Link>

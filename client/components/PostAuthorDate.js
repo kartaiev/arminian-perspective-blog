@@ -1,10 +1,10 @@
 import React from "react";
 import PublishedDate from "./PublishedDate";
 
-const PostAuthorDate = ({ name, publishedAt }) => {
+const PostAuthorDate = ({ secondProp, publishedAt }) => {
   return (
-    <div className="py-2 flex justify-between text-sm text-gray-600">
-      <span className="hover:text-gray-800">{name}</span>
+    <div className=" pb-4 flex justify-between text-sm text-gray-500">
+      <span className="hover:text-gray-800">{secondProp}</span>
       <PublishedDate publishedAt={publishedAt} />
     </div>
   );

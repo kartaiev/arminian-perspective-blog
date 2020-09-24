@@ -34,8 +34,13 @@ const Post = ({
     <Layout>
       <article className="h-full  mb-20 text-gray-800">
         {mainImage && <PostCover mainImage={mainImage} title={title} />}
-        <PostBody title={title} subtitle={subtitle} body={body} />
-        <PostAuthorDate name={name} publishedAt={publishedAt} />
+        <PostBody
+          title={title}
+          subtitle={subtitle}
+          body={body}
+          publishedAt={publishedAt}
+          name={name}
+        />
         {categories && <PostCategories categories={categories} />}
       </article>
     </Layout>
