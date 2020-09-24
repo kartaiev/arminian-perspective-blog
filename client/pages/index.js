@@ -27,7 +27,9 @@ const App = ({ posts = [] }) => {
 
   return (
     <Layout>
-      <div className="mb-6 grid grid-cols-1 gap-6">{previews}</div>
+      <div className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:mt-6 lg:mx-32 xl:grid-cols-3 xl:gap-12">
+        {previews}
+      </div>
     </Layout>
   );
 };

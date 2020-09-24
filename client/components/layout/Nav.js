@@ -14,7 +14,7 @@ const Nav = () => {
   return (
     <div>
       <div className="h-10 lg:h-16 w-full border-b border-gray-300 flex items-center justify-center">
-        <ul className="hidden w-1/3 h-full lg:flex items-center justify-between">
+        <ul className="hidden lg:w:2/3 xl:w-1/2  h-full lg:flex lg:items-center lg:justify-around">
           {links}
         </ul>
         <button onClick={handleOpen} className="lg:hidden  focus:outline-none">

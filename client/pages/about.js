@@ -4,7 +4,7 @@ import Layout from "../components/layout/Layout";
 const About = () => {
   return (
     <Layout>
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between max-w-5xl  mx-auto">
         <h1 className="text-2xl font-bold text-gray-900 my-6">Об этом блоге</h1>
         <p className="mb-20">
           Целью данного блога является обсуждение в богословских рамках
