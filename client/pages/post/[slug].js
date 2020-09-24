@@ -9,7 +9,7 @@ const Post = ({ post }) => {
   console.log(post);
   return (
     <Layout>
-      <article className="h-full mb-20">
+      <article className="h-full mt-6 mb-20">
         {post.mainImage && (
           <div className="mainImage-container">
             <img
@@ -24,7 +24,7 @@ const Post = ({ post }) => {
           <span className="my-4">{post.name}</span>
           <BlockContent
             className="my-4"
-            blocks={post.content}
+            blocks={post.body}
             {...client.config()}
           />
           {/*{post.categories && (*/}

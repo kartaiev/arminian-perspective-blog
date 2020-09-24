@@ -19,14 +19,14 @@ const PostCard = ({ slug, updatedAt, mainImage, title, subtitle }) => {
                 />
               </div>
             )}
-            <div className="py-2">
-              <h1 className="py-4 font-bold text-gray-800">{title}</h1>
+            <div className="pt-4">
+              <h1 className="font-bold text-gray-800">{title}</h1>
               <p>{subtitle}</p>
-              <div className="py-6 flex justify-between text-sm text-gray-600">
-                <p>
+              <div className="py-2 flex justify-between text-sm text-gray-600">
+                <span>
                   {format(new Date(updatedAt), "d MMM yyyy", { locale: ru })}
-                </p>
-                <p className="hover:text-gray-800">читать</p>
+                </span>
+                <span className="hover:text-gray-800">читать</span>
               </div>
             </div>
           </div>

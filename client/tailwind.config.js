@@ -6,8 +6,7 @@ module.exports = {
         mk: "2px",
       },
       fontFamily: {
-        logo: ["Bad Script"],
-        menu: ["Montserrat"],
+        primary: ["Inter"],
       },
     },
   },
