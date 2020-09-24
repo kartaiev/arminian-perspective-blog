@@ -1,31 +1,21 @@
 import React from "react";
 import { urlFor } from "../lib/helpers";
 import Link from "next/link";
-import { format } from "date-fns";
-import { ru } from "date-fns/locale";
+import PublishedDate from "./PublishedDate";
+import PostCover from "./PostCover";
 
-const PostCard = ({ slug, updatedAt, mainImage, title, subtitle }) => {
+const PostCard = ({ slug, publishedAt, mainImage, title, subtitle }) => {
   return (
     slug && (
       <Link href="/post/[slug]" as={`/post/${slug.current}`}>
-        <a className="mt-6">
+        <a className="mt-6 border-none">
           <div className="overflow-hidden">
-            {mainImage && (
-              <div>
-                <img
-                  className="w-full h-56 block object-cover top-0 left-0 align-top"
-                  src={urlFor(mainImage).auto("format").url()}
-                  alt={title}
-                />
-              </div>
-            )}
+            {mainImage && <PostCover mainImage={mainImage} title={title} />}
             <div className="pt-4">
               <h1 className="font-bold text-gray-800">{title}</h1>
               <p>{subtitle}</p>
               <div className="py-2 flex justify-between text-sm text-gray-600">
-                <span>
-                  {format(new Date(updatedAt), "d MMM yyyy", { locale: ru })}
-                </span>
+                <PublishedDate publishedAt={publishedAt} />
                 <span className="hover:text-gray-800">читать</span>
               </div>
             </div>

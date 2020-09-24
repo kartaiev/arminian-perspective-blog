@@ -1,25 +1,29 @@
 import client from "./client";
 import groq from "groq";
 
-// const fields = `
-//   title,
-//   subtitle,
-//   slug: slug.current
-//   `;
+const queryAll = groq`*[_type == "post"] {
+  _id,
+  title,
+  subtitle,
+  publishedAt,
+  slug,
+  mainImage,
+}`;
 
 export const getAllPosts = async () => {
-  return await client.fetch(groq`
-      *[_type == "post"]|order(publishedAt desc)
-    `);
+  return await client.fetch(queryAll);
 };
 
-const query = groq`*[_type == "post" && slug.current == $slug][0]{
+const queryBuSlug = groq`*[_type == "post" && slug.current == $slug][0]{
   title,
+  subtitle,
+  publishedAt,
   "name": author->name,
   mainImage,
+  "categories": categories[]->title,
   body
 }`;
 
 export const getSinglePost = async (slug) => {
-  return await client.fetch(query, { slug });
+  return await client.fetch(queryBuSlug, { slug });
 };

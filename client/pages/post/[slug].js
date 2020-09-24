@@ -1,47 +1,14 @@
 import React from "react";
-import BlockContent from "@sanity/block-content-to-react";
 import Layout from "components/layout/Layout";
-import { urlFor } from "lib/helpers";
 import { getSinglePost, getAllPosts } from "lib/api";
-import client from "../../lib/client";
-
-const Post = ({ post }) => {
-  console.log(post);
-  return (
-    <Layout>
-      <article className="h-full mt-6 mb-20">
-        {post.mainImage && (
-          <div className="mainImage-container">
-            <img
-              className="w-full h-full block object-cover top-0 left-0 align-top"
-              src={urlFor(post.mainImage).auto("format").url()}
-              alt={post.title}
-            />
-          </div>
-        )}
-        <div className="max-w-4xl  mx-auto">
-          <h1 className="font-bold text-2xl my-4">{post.title}</h1>
-          <span className="my-4">{post.name}</span>
-          <BlockContent
-            className="my-4"
-            blocks={post.body}
-            {...client.config()}
-          />
-          {/*{post.categories && (*/}
-          {/*  <ul>*/}
-          {/*    {post.categories.map((category) => (*/}
-          {/*      <li key={category}>{category}</li>*/}
-          {/*    ))}*/}
-          {/*  </ul>*/}
-          {/*)}*/}
-        </div>
-      </article>
-    </Layout>
-  );
-};
+import PostCover from "../../components/PostCover";
+import PostBody from "../../components/PostBody";
+import PostAuthorDate from "../../components/PostAuthorDate";
+import PostCategories from "../../components/layout/PostCatigories";
 
 export async function getStaticProps({ params }) {
   const post = await getSinglePost(params.slug);
+  console.log(post);
   return {
     props: {
       post,
@@ -59,5 +26,20 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+const Post = ({
+  post: { mainImage, title, subtitle, publishedAt, name, body, categories },
+}) => {
+  return (
+    <Layout>
+      <article className="h-full mt-6 mb-20 text-gray-800">
+        {mainImage && <PostCover mainImage={mainImage} title={title} />}
+        <PostBody title={title} subtitle={subtitle} body={body} />
+        <PostAuthorDate name={name} publishedAt={publishedAt} />
+        {categories && <PostCategories categories={categories} />}
+      </article>
+    </Layout>
+  );
+};
 
 export default Post;

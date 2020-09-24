@@ -5,23 +5,22 @@ import PostCard from "../components/PostCard";
 import { getAllPosts } from "../lib/api";
 
 const App = ({ posts = [] }) => {
-  console.log(posts);
   const previews = posts.map(
     ({
       _id,
       title = "",
       subtitle = "",
       slug = "",
-      _updatedAt = "",
       mainImage,
+      publishedAt = "",
     }) => (
       <PostCard
         key={_id}
         title={title}
         subtitle={subtitle}
         slug={slug}
-        updatedAt={_updatedAt}
         mainImage={mainImage}
+        publishedAt={publishedAt}
       />
     )
   );

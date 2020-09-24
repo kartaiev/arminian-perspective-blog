@@ -23,7 +23,7 @@ export const GlobalProvider = ({ children }) => {
         }
       >
         <Link href={path}>
-          <a>{label}</a>
+          <a className="border-none">{label}</a>
         </Link>
       </li>
     );
