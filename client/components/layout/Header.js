@@ -6,7 +6,7 @@ const Header = () => {
     <>
       <div className="h-24 border-b border-gray-300 flex items-center justify-between">
         <svg
-          className="w-6 h-6"
+          className="w-6 h-6 xl:w-8 xl:h-8"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -23,7 +23,7 @@ const Header = () => {
           Арминианская перспектива
         </h1>
         <svg
-          className="w-6 h-6"
+          className="w-6 h-6 xl:w-8 xl:h-8"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
