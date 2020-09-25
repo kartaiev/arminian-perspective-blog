@@ -19,7 +19,7 @@ const Header = () => {
             d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
           />
         </svg>
-        <h1 className="uppercase text-gray-800 text-center text-xl lg:text-4xl xl:text-5xl font-bold">
+        <h1 className="title uppercase text-gray-800 text-center text-xl lg:text-4xl xl:text-5xl font-bold">
           Арминианская перспектива
         </h1>
         <svg
