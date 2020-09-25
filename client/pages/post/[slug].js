@@ -1,10 +1,10 @@
 import React from "react";
 import Layout from "components/layout/Layout";
 import { getSinglePost, getAllPosts } from "lib/api";
-import PostCover from "../../components/PostCover";
-import PostBody from "../../components/PostBody";
-import PostAuthorDate from "../../components/PostAuthorDate";
-import PostCategories from "../../components/layout/PostCatigories";
+import PostCover from "../../components/single-post/PostCover";
+import PostBody from "../../components/single-post/PostBody";
+import PostAuthorDate from "../../components/single-post/PostAuthorDate";
+import PostCategories from "../../components/single-post/PostCatigories";
 
 export async function getStaticProps({ params }) {
   const post = await getSinglePost(params.slug);

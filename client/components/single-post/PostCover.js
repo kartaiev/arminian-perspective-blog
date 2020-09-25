@@ -1,5 +1,5 @@
 import React from "react";
-import { urlFor } from "../lib/helpers";
+import { urlFor } from "../../lib/helpers";
 
 const PostCover = ({ mainImage, title }) => {
   return (

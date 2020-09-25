@@ -4,6 +4,7 @@ import PostCard from "../components/PostCard";
 import { Tooltip } from "@chakra-ui/core";
 import { getAllPosts } from "../lib/api";
 import { useToggle } from "../hooks/useToggle";
+import { motion } from "framer-motion";
 
 const App = ({ posts = [] }) => {
   const { isToggled, toggle } = useToggle();
@@ -30,10 +31,20 @@ const App = ({ posts = [] }) => {
 
   return (
     <Layout>
-      <div className="hidden h-10 px-32 mt-6 lg:flex justify-start items-center">
-        <button onClick={toggle} className="focus:outline-none">
+      <div className="hidden h-10 lg:px-16 xl:px-48 mt-6 lg:flex justify-start items-center">
+        <motion.button
+          whileHover={{ scale: 1.2 }}
+          onClick={toggle}
+          className="focus:outline-none"
+        >
           {isToggled ? (
-            <Tooltip hasArrow label="отобразить сеткой" placement="top">
+            <Tooltip
+              hasArrow
+              bg="gray.600"
+              color="white"
+              label="отобразить сеткой"
+              placement="top"
+            >
               <svg
                 className="w-8 h-8"
                 fill="none"
@@ -50,7 +61,7 @@ const App = ({ posts = [] }) => {
               </svg>
             </Tooltip>
           ) : (
-            <Tooltip hasArrow label="отобразить списком" placement="top">
+            <Tooltip hasArrow label="отобразить списком" placement="right-end">
               <svg
                 className="w-8 h-8"
                 fill="none"
@@ -67,9 +78,9 @@ const App = ({ posts = [] }) => {
               </svg>
             </Tooltip>
           )}
-        </button>
+        </motion.button>
       </div>
-      <div className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:mt-2 lg:mx-32 xl:grid-cols-3 xl:gap-12">
+      <div className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:mt-2 lg:mx-16 xl:mx-48 xl:grid-cols-3 xl:gap-12">
         {previews}
       </div>
     </Layout>

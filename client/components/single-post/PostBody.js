@@ -7,7 +7,7 @@ const PostBody = ({ body, title, subtitle, publishedAt, name }) => {
     <div className="max-w-5xl  mx-auto">
       <h1 className="font-bold text-2xl mt-6 mb-2">{title}</h1>
       <PostAuthorDate publishedAt={publishedAt} secondProp={name} />
-      <h2 className="font-semibold text-gray-800">{subtitle}</h2>
+      <h2 className="font-semibold text-gray-800 mt-4">{subtitle}</h2>
       <BlockContent className="my-6" blocks={body} />
     </div>
   );

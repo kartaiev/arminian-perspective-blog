@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import PostCover from "./PostCover";
-import PostAuthorDate from "./PostAuthorDate";
+import PostCover from "./single-post/PostCover";
+import PostAuthorDate from "./single-post/PostAuthorDate";
 import { motion } from "framer-motion";
 
 const PostCard = ({ slug, publishedAt, mainImage, title, subtitle }) => {
