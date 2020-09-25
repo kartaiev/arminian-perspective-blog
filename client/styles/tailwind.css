@@ -16,7 +16,7 @@ body {
     font-family: Inter, sans-serif;
 }
 main {
-    height: calc(100% - 180px);
+    height: calc(100% - 11rem);
 }
 .footer {
     grid-row-start: 2;
