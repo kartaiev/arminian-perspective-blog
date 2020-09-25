@@ -11,6 +11,8 @@ body {
     min-height: 100%;
     display: grid;
     grid-template-rows: 1fr auto;
+    padding: 0 1.5rem;
+    font-family: Inter, sans-serif;
 }
 .footer {
     grid-row-start: 2;
