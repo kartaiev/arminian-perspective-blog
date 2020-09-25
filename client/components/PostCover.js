@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const PostCover = ({ mainImage, title }) => {
   const variants = {
-    hover: { scale: 1.05, boxShadow: "0 10px 20px rgba(0, 0, 0, 0.7)" },
+    hover: { scale: 1.05 },
     off: { scale: 1 },
   };
 
