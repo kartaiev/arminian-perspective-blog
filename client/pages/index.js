@@ -21,7 +21,7 @@ const App = ({ posts = [] }) => {
 
   const gridClass = isToggled
     ? "md:mx-16 lg:mx-16 xl:mx-64"
-    : "lg:grid-cols-2 lg:mt-2 lg:mx-16 xl:mx-64 xl:grid-cols-3 xl:gap-12";
+    : "ip:grid-cols-2 lg:grid-cols-2 lg:mt-2 lg:mx-16 xl:mx-64 xl:grid-cols-2 ip:grid-cols-3 xl:gap-12";
 
   const previews = posts.map(
     ({ _id, title, subtitle, slug, mainImage, publishedAt, body }) =>
