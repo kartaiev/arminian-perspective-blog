@@ -1,41 +1,17 @@
 import React from "react";
 import Nav from "components/layout/Nav";
+import { moonIcon, searchIcon, sunIcon } from "../../lib/icons";
+import IconsBtn from "../IconsBtn";
 
 const Header = () => {
   return (
     <>
       <div className="h-24 border-b border-gray-300 flex items-center justify-between">
-        <svg
-          className="w-6 h-6 xl:w-8 xl:h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-          />
-        </svg>
-        <h1 className="title uppercase text-gray-800 text-center text-xl lg:text-4xl xl:text-5xl font-bold">
+        <IconsBtn firstIcon={sunIcon} secondIcon={moonIcon} />
+        <h1 className="header-title lg:text-4xl xl:text-5xl">
           Арминианская перспектива
         </h1>
-        <svg
-          className="w-6 h-6 xl:w-8 xl:h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          />
-        </svg>
+        {searchIcon}
       </div>
       <Nav />
     </>

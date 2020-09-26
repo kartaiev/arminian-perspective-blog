@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "components/layout/Layout";
 import { getSinglePost, getAllPosts } from "lib/api";
-import PostCover from "../../components/single-post/PostCover";
+import PostCover from "../../components/PostCover";
 import PostBody from "../../components/single-post/PostBody";
 import PostAuthorDate from "../../components/single-post/PostAuthorDate";
 import PostCategories from "../../components/single-post/PostCatigories";

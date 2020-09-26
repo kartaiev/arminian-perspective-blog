@@ -8,6 +8,7 @@ const queryAll = groq`*[_type == "post"] {
   publishedAt,
   slug,
   mainImage,
+  "body": body[0]
 }`;
 
 export const getAllPosts = async () => {
