@@ -19,10 +19,6 @@ const App = ({ posts = [] }) => {
     width <= 768 && setToggle(false);
   }, [width]);
 
-  const gridClass = isToggled
-    ? "md:mx-16 lg:mx-16 xl:mx-64"
-    : "ip:grid-cols-2 lg:grid-cols-2 lg:mt-2 lg:mx-16 xl:mx-64 xl:grid-cols-2 ip:grid-cols-3 xl:gap-12";
-
   const previews = posts.map(
     ({ _id, title, subtitle, slug, mainImage, publishedAt, body }) =>
       isToggled ? (
@@ -49,9 +45,13 @@ const App = ({ posts = [] }) => {
       )
   );
 
+  const gridClass = isToggled
+    ? "md:mx-16 lg:mx-16 xl:mx-16 ip:mx-64"
+    : "ip:grid-cols-2 lg:grid-cols-2 lg:mt-2 lg:mx-16 ip:mx-64 xl:mx-16 ip:grid-cols-3 xl:gap-12";
+
   return (
     <Layout>
-      <div className="hidden h-10 mt-6 justify-start items-center lg:flex md:px-16 xl:px-64">
+      <div className="hidden h-10 mt-6 justify-start items-center lg:flex md:px-16 xl:px-16 ip:px-64">
         <IconsBtn
           firstIcon={gridIcon}
           secondIcon={listIcon}
