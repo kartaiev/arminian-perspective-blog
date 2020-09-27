@@ -1,53 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Layout from "../components/layout/Layout";
-import PostGridCard from "../components/posts-preview/PostGridCard";
-
 import { getAllPosts } from "../lib/api";
 import { useToggle } from "../hooks/useToggle";
-
 import IconsBtn from "../components/IconsBtn";
 import { gridIcon, listIcon } from "../lib/icons";
-import PostListCard from "../components/posts-preview/PostListCard";
+import PostCard from "../components/posts-preview/PostCard";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 
 const App = ({ posts = [] }) => {
-  const { isToggled, setToggle, toggle } = useToggle();
+  const {
+    isToggled: isListView,
+    setToggle: setListView,
+    toggle: switchView,
+  } = useToggle();
 
   const width = useWindowWidth();
 
   useEffect(() => {
-    width <= 768 && setToggle(false);
+    width <= 768 && setListView(false);
   }, [width]);
 
   const previews = posts.map(
-    ({ _id, title, subtitle, slug, mainImage, publishedAt, body }) =>
-      isToggled ? (
-        <PostListCard
-          key={_id}
-          title={title}
-          subtitle={subtitle}
-          slug={slug}
-          mainImage={mainImage}
-          publishedAt={publishedAt}
-          body={body}
-          isToggled={isToggled}
-        />
-      ) : (
-        <PostGridCard
-          key={_id}
-          title={title}
-          subtitle={subtitle}
-          slug={slug}
-          mainImage={mainImage}
-          publishedAt={publishedAt}
-          isToggled={isToggled}
-        />
-      )
+    ({ _id, title, subtitle, slug, mainImage, publishedAt, body }) => (
+      <PostCard
+        key={_id}
+        title={title}
+        subtitle={subtitle}
+        slug={slug}
+        mainImage={mainImage}
+        publishedAt={publishedAt}
+        body={body}
+        isListView={isListView}
+      />
+    )
   );
 
-  const gridClass = isToggled
-    ? "md:mx-16 lg:mx-16 xl:mx-16 ip:mx-64"
-    : "ip:grid-cols-2 lg:grid-cols-2 lg:mt-2 lg:mx-16 ip:mx-64 xl:mx-16 ip:grid-cols-3 xl:gap-12";
+  const gridClass = isListView
+    ? "md:mx-16"
+    : "lg:grid-cols-2 lg:mt-2 ip:grid-cols-3 xl:gap-12";
 
   return (
     <Layout>
@@ -55,11 +45,13 @@ const App = ({ posts = [] }) => {
         <IconsBtn
           firstIcon={gridIcon}
           secondIcon={listIcon}
-          isToggled={isToggled}
-          toggle={toggle}
+          isListView={isListView}
+          switchView={switchView}
         />
       </div>
-      <div className={`mb-6 grid grid-cols-1 gap-6 ${gridClass}`}>
+      <div
+        className={`mb-6 grid grid-cols-1 gap-6 lg:mx-16 ip:mx-64 ${gridClass}`}
+      >
         {previews}
       </div>
     </Layout>

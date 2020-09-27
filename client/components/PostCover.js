@@ -1,8 +1,8 @@
 import React from "react";
 import { urlFor } from "../lib/helpers";
 
-const PostCover = ({ mainImage, title, isToggled }) => {
-  const mainImageContainer = isToggled
+const PostCover = ({ mainImage, title, isListView }) => {
+  const mainImageContainer = isListView
     ? "w-1/2 relative"
     : "mainImage-container";
 

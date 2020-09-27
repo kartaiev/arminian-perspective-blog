@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const IconsBtn = ({ firstIcon, secondIcon, toggle, isToggled }) => {
+const IconsBtn = ({ firstIcon, secondIcon, switchView, isListView }) => {
   return (
     <motion.button
       whileHover={{ scale: 1.2 }}
-      onClick={toggle}
+      onClick={switchView}
       className="focus:outline-none"
     >
-      {isToggled ? firstIcon : secondIcon}
+      {isListView ? firstIcon : secondIcon}
     </motion.button>
   );
 };
