@@ -25,6 +25,8 @@ const PostCard = ({
     ? "mt-6 h-64 flex border border-gray-400 rounded-lg overflow-hidden"
     : "mt-6 border border-gray-400 rounded-lg overflow-hidden";
 
+  const h2Class = isListView ? " pr-24" : "";
+
   return (
     slug && (
       <Link href="/post/[slug]" as={`/post/${slug.current}`}>
@@ -37,7 +39,9 @@ const PostCard = ({
           <div className=" w-full p-6 flex flex-col justify-between">
             <div>
               <h1 className="font-bold text-gray-800 text-2xl">{title}</h1>
-              <h2 className="font-semibold text-xl text-gray-800 my-6 pr-24">
+              <h2
+                className={`font-semibold text-xl text-gray-800 my-6 ${h2Class}`}
+              >
                 {subtitle}
               </h2>
             </div>

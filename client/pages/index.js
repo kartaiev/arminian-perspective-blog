@@ -6,8 +6,10 @@ import IconsBtn from "../components/IconsBtn";
 import { gridIcon, listIcon } from "../lib/icons";
 import PostCard from "../components/posts-preview/PostCard";
 import { useWindowWidth } from "../hooks/useWindowWidth";
+import { useGetPosts } from "../actions";
+import Spinner from "@chakra-ui/core/dist/Spinner";
 
-const App = ({ posts = [] }) => {
+const App = ({ posts }) => {
   const {
     isToggled: isListView,
     setToggle: setListView,
@@ -19,6 +21,8 @@ const App = ({ posts = [] }) => {
   useEffect(() => {
     width <= 768 && setListView(false);
   }, [width]);
+
+  const { data, error } = useGetPosts();
 
   const previews = posts.map(
     ({ _id, title, subtitle, slug, mainImage, publishedAt, body }) => (
@@ -41,6 +45,17 @@ const App = ({ posts = [] }) => {
 
   return (
     <Layout>
+      {!data && (
+        <div className="h-full w-full flex items-center justify-center">
+          <Spinner
+            size="xl"
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="gray.800"
+          />
+        </div>
+      )}
       <div className="hidden h-10 mt-6 justify-start items-center lg:flex md:px-16 xl:px-16 ip:px-64">
         <IconsBtn
           firstIcon={gridIcon}
