@@ -32,7 +32,7 @@ const Post = ({
 }) => {
   return (
     <Layout>
-      <article className="h-full  mb-20 text-gray-800">
+      <article className="h-full xl:max-w-5xl py-6 mx-auto mb-20 text-gray-800">
         {mainImage && <PostCover mainImage={mainImage} title={title} />}
         <PostBody
           title={title}

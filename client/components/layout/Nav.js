@@ -32,7 +32,7 @@ const Nav = () => {
   return (
     <div>
       <div className="h-10 lg:h-16 w-full border-b border-gray-300 flex items-center justify-center">
-        <ul className="hidden md:text-lg lg:text-xl xl:w-3/4 xl:px-12  h-full lg:flex lg:items-center lg:justify-around">
+        <ul className="hidden list-none md:text-lg lg:text-xl xl:w-3/4 xl:px-12 h-full lg:flex lg:items-center lg:justify-around pr-0">
           {links}
         </ul>
         <button onClick={toggle} className="lg:hidden  focus:outline-none">

@@ -1,7 +1,9 @@
 import client from "./client";
 import groq from "groq";
 
-const queryAll = groq`*[_type == "post"] {
+const queryAll = (offset = 0) => groq`*[_type == "post"][${offset}...${
+  offset + 3
+}]  | order(publishedAt desc) {
   _id,
   title,
   subtitle,
@@ -10,8 +12,8 @@ const queryAll = groq`*[_type == "post"] {
   mainImage,
 }`;
 
-export const getAllPosts = async () => {
-  return await client.fetch(queryAll);
+export const getAllPosts = async (offset) => {
+  return await client.fetch(queryAll(offset));
 };
 
 const queryBuSlug = groq`*[_type == "post" && slug.current == $slug][0]{

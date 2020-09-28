@@ -9,7 +9,7 @@ import { useWindowWidth } from "../hooks/useWindowWidth";
 import { useGetPosts } from "../actions";
 import Spinner from "@chakra-ui/core/dist/Spinner";
 
-const App = ({ posts }) => {
+const App = ({ posts: initialData }) => {
   const {
     isToggled: isListView,
     setToggle: setListView,
@@ -22,7 +22,7 @@ const App = ({ posts }) => {
     width <= 768 && setListView(false);
   }, [width]);
 
-  const { data, error } = useGetPosts();
+  const { data: posts, error } = useGetPosts(initialData);
 
   const previews = posts.map(
     ({ _id, title, subtitle, slug, mainImage, publishedAt, body }) => (
@@ -45,7 +45,7 @@ const App = ({ posts }) => {
 
   return (
     <Layout>
-      {!data && (
+      {!posts && (
         <div className="h-full w-full flex items-center justify-center">
           <Spinner
             size="xl"
@@ -74,7 +74,7 @@ const App = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const posts = await getAllPosts();
+  const posts = await getAllPosts(0);
   return {
     props: {
       posts,

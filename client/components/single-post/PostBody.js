@@ -4,7 +4,7 @@ import PostAuthorDate from "./PostAuthorDate";
 
 const PostBody = ({ body, title, subtitle, publishedAt, name }) => {
   return (
-    <div className="max-w-5xl  mx-auto">
+    <div className="">
       <h1 className="font-bold text-2xl mt-6 mb-2">{title}</h1>
       <PostAuthorDate publishedAt={publishedAt} secondProp={name} />
       <h2 className="font-semibold text-gray-800 mt-4">{subtitle}</h2>
