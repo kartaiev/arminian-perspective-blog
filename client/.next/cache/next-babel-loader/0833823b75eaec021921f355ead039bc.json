@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { useState } from \"react\";\nexport const useToggle = (initial = false) => {\n  const {\n    0: isToggled,\n    1: setToggle\n  } = useState(initial);\n\n  const toggle = () => setToggle(state => !state);\n\n  return {\n    isToggled,\n    setToggle,\n    toggle\n  };\n};","map":null,"metadata":{},"sourceType":"module"}

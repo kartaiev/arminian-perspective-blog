@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport React from \"react\";\n\nconst PostCatigories = ({\n  categories\n}) => {\n  return __jsx(\"ul\", null, categories.map(category => __jsx(\"li\", {\n    key: category\n  }, category)));\n};\n\nexport default PostCatigories;","map":null,"metadata":{},"sourceType":"module"}
