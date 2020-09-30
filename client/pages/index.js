@@ -3,19 +3,11 @@ import Layout from "../components/layout/Layout";
 import { getAllPosts } from "../lib/api";
 import { useToggle } from "../hooks/useToggle";
 import IconsBtn from "../components/IconsBtn";
-import {
-  gridIcon,
-  listIcon,
-  rightArrow,
-  leftArrow,
-  downChevron,
-} from "../lib/icons";
+import { gridIcon, listIcon, downChevron } from "../lib/icons";
 import PostCard from "../components/posts-preview/PostCard";
 import { useWindowWidth } from "../hooks/useWindowWidth";
-import { dataDDD, fetcher, getKey, useGetPosts } from "../actions";
-import { Button } from "semantic-ui-react";
-import { PAGE_SIZE } from "../lib/vars";
-import { useSWRInfinite } from "swr";
+import { useGetPosts } from "../actions";
+import { handleScroll } from "../lib/helpers";
 
 const App = ({ posts }) => {
   const {
@@ -23,8 +15,6 @@ const App = ({ posts }) => {
     setToggle: setListView,
     toggle: switchView,
   } = useToggle();
-
-  const [index, setIndex] = useState(0);
 
   const width = useWindowWidth();
 
@@ -35,6 +25,33 @@ const App = ({ posts }) => {
   const initialData = [posts];
 
   const { data: paginatedPosts, size, setSize } = useGetPosts(initialData);
+
+  const handleScroll = () => {
+    const windowHeight =
+      "innerHeight" in window
+        ? window.innerHeight
+        : document.documentElement.offsetHeight;
+    const body = document.body;
+    const html = document.documentElement;
+    const docHeight = Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight
+    );
+    const windowBottom = windowHeight + window.pageYOffset;
+    if (windowBottom >= docHeight) {
+      setSize(size + 1);
+    } else {
+      console.log("top");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [window.scrollY]);
 
   if (!paginatedPosts) return "loading";
 
