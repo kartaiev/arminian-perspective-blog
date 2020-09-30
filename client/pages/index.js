@@ -5,9 +5,10 @@ import IconsBtn from "../components/IconsBtn";
 import { downChevron, gridIcon, listIcon } from "../lib/icons";
 import PostCard from "../components/posts-preview/PostCard";
 import { useWindowWidth } from "../hooks/useWindowWidth";
-import { useGetPosts } from "../actions";
 import { handleScroll } from "../lib/helpers";
 import { GlobalContext } from "../context/global.context";
+
+import { useGetPosts } from "../actions";
 
 const App = ({ posts }) => {
   const { setListView, isListView, switchView } = useContext(GlobalContext);
@@ -20,9 +21,9 @@ const App = ({ posts }) => {
 
   const initialData = [posts];
 
-  const { data: paginatedPosts, size, setSize } = useGetPosts(initialData);
-
   const increaseSize = () => setSize(size + 1);
+
+  const { data: paginatedPosts, size, setSize } = useGetPosts(initialData);
 
   useEffect(() => {
     window.addEventListener("scroll", () => handleScroll(increaseSize));
