@@ -1,9 +1,18 @@
 import React, { createContext } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { useToggle } from "../hooks/useToggle";
 
 export const GlobalContext = createContext(undefined, undefined);
 
 export const GlobalProvider = ({ children }) => {
-  return <GlobalContext.Provider value={{}}>{children}</GlobalContext.Provider>;
+  const {
+    isToggled: isListView,
+    setToggle: setListView,
+    toggle: switchView,
+  } = useToggle();
+
+  return (
+    <GlobalContext.Provider value={{ isListView, setListView, switchView }}>
+      {children}
+    </GlobalContext.Provider>
+  );
 };

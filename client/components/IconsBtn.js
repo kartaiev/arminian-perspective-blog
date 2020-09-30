@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
+import { GlobalContext } from "../context/global.context";
 
-const IconsBtn = ({ firstIcon, secondIcon, switchView, isListView }) => {
+const IconsBtn = ({ firstIcon, secondIcon, toggle, isToggled }) => {
   return (
     <motion.button
       whileHover={{ scale: 1.2 }}
-      onClick={switchView}
+      onClick={toggle}
       className="focus:outline-none"
     >
-      {isListView ? firstIcon : secondIcon}
+      {isToggled ? firstIcon : secondIcon}
     </motion.button>
   );
 };

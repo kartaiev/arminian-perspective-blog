@@ -1,17 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import PostAuthorDate from "../single-post/PostAuthorDate";
 import PostCover from "../PostCover";
+import { GlobalContext } from "../../context/global.context";
 
-const PostCard = ({
-  slug,
-  mainImage,
-  subtitle,
-  publishedAt,
-  title,
-  isListView,
-}) => {
+const PostCard = ({ slug, mainImage, subtitle, publishedAt, title }) => {
+  const { isListView } = useContext(GlobalContext);
+
   const variants = {
     hover: {
       scale: 1.03,
@@ -31,12 +27,8 @@ const PostCard = ({
     slug && (
       <Link href="/post/[slug]" as={`/post/${slug.current}`}>
         <motion.a whileHover="hover" variants={variants} className={cardClass}>
-          <PostCover
-            mainImage={mainImage}
-            title={title}
-            isListView={isListView}
-          />
-          <div className="h-full w-full p-6 relative">
+          <PostCover mainImage={mainImage} title={title} />
+          <div className="h-full w-full p-6 relative flex flex-col justify-between">
             <div className="pb-12">
               <h1 className="font-bold text-gray-800 text-2xl mb-4">{title}</h1>
               <h2 className="text-gray-600">{subtitle}</h2>

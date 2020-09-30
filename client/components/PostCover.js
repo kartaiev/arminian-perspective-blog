@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { urlFor } from "../lib/helpers";
+import { GlobalContext } from "../context/global.context";
 
-const PostCover = ({ mainImage, title, isListView }) => {
+const PostCover = ({ mainImage, title }) => {
+  const { isListView } = useContext(GlobalContext);
+
   const mainImageContainer = isListView
     ? "w-1/2 relative"
     : "mainImage-container";

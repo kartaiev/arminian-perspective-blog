@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Layout from "../components/layout/Layout";
 import { getAllPosts } from "../lib/api";
-import { useToggle } from "../hooks/useToggle";
 import IconsBtn from "../components/IconsBtn";
-import { gridIcon, listIcon, downChevron } from "../lib/icons";
+import { downChevron, gridIcon, listIcon } from "../lib/icons";
 import PostCard from "../components/posts-preview/PostCard";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 import { useGetPosts } from "../actions";
 import { handleScroll } from "../lib/helpers";
+import { GlobalContext } from "../context/global.context";
 
 const App = ({ posts }) => {
-  const {
-    isToggled: isListView,
-    setToggle: setListView,
-    toggle: switchView,
-  } = useToggle();
+  const { setListView, isListView, switchView } = useContext(GlobalContext);
 
   const width = useWindowWidth();
 
@@ -26,31 +22,12 @@ const App = ({ posts }) => {
 
   const { data: paginatedPosts, size, setSize } = useGetPosts(initialData);
 
-  const handleScroll = () => {
-    const windowHeight =
-      "innerHeight" in window
-        ? window.innerHeight
-        : document.documentElement.offsetHeight;
-    const body = document.body;
-    const html = document.documentElement;
-    const docHeight = Math.max(
-      body.scrollHeight,
-      body.offsetHeight,
-      html.clientHeight,
-      html.scrollHeight,
-      html.offsetHeight
-    );
-    const windowBottom = windowHeight + window.pageYOffset;
-    if (windowBottom >= docHeight - 10) {
-      setSize(size + 1);
-    } else {
-      console.log("top");
-    }
-  };
+  const increaseSize = () => setSize(size + 1);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", () => handleScroll(increaseSize));
+    return () =>
+      window.removeEventListener("scroll", () => handleScroll(increaseSize));
   }, []);
 
   if (!paginatedPosts) return "loading";
@@ -67,7 +44,6 @@ const App = ({ posts }) => {
           mainImage={mainImage}
           publishedAt={publishedAt}
           body={body}
-          isListView={isListView}
         />
       ))
     );
@@ -87,8 +63,8 @@ const App = ({ posts }) => {
         <IconsBtn
           firstIcon={gridIcon}
           secondIcon={listIcon}
-          isListView={isListView}
-          switchView={switchView}
+          toggle={switchView}
+          isToggled={isListView}
         />
       </div>
       <div
