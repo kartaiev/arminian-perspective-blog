@@ -5,10 +5,10 @@ import PostCover from "../../components/PostCover";
 import PostBody from "../../components/single-post/PostBody";
 import PostAuthorDate from "../../components/single-post/PostAuthorDate";
 import PostCategories from "../../components/single-post/PostCatigories";
+import { getAllSlugs } from "../../lib/api";
 
 export async function getStaticProps({ params }) {
   const post = await getSinglePost(params.slug);
-  console.log(post);
   return {
     props: {
       post,
@@ -17,11 +17,10 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts();
-
+  const posts = await getAllSlugs();
   return {
-    paths: posts.map((post) => ({
-      params: { slug: post.slug.current },
+    paths: posts.map(({ slug }) => ({
+      params: { slug: slug.current },
     })),
     fallback: false,
   };

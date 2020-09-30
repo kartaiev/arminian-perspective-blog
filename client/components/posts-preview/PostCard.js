@@ -36,14 +36,10 @@ const PostCard = ({
             title={title}
             isListView={isListView}
           />
-          <div className=" w-full p-6 flex flex-col justify-between">
-            <div>
-              <h1 className="font-bold text-gray-800 text-2xl">{title}</h1>
-              <h2
-                className={`font-semibold text-xl text-gray-800 my-6 ${h2Class}`}
-              >
-                {subtitle}
-              </h2>
+          <div className="h-full w-full p-6 relative">
+            <div className="pb-12">
+              <h1 className="font-bold text-gray-800 text-2xl mb-4">{title}</h1>
+              <h2 className="text-gray-600">{subtitle}</h2>
             </div>
             <PostAuthorDate secondProp={""} publishedAt={publishedAt} />
           </div>

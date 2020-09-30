@@ -1,8 +1,9 @@
 import client from "./client";
 import groq from "groq";
+import { PAGE_SIZE } from "./vars";
 
-const queryAll = (offset = 0) => groq`*[_type == "post"][${offset}...${
-  offset + 3
+const queryAll = (offset) => groq`*[_type == "post"][${offset}...${
+  offset + PAGE_SIZE
 }]  | order(publishedAt desc) {
   _id,
   title,
@@ -16,7 +17,7 @@ export const getAllPosts = async (offset) => {
   return await client.fetch(queryAll(offset));
 };
 
-const queryBuSlug = groq`*[_type == "post" && slug.current == $slug][0]{
+const queryBySlug = groq`*[_type == "post" && slug.current == $slug][0]{
   title,
   subtitle,
   publishedAt,
@@ -27,5 +28,11 @@ const queryBuSlug = groq`*[_type == "post" && slug.current == $slug][0]{
 }`;
 
 export const getSinglePost = async (slug) => {
-  return await client.fetch(queryBuSlug, { slug });
+  return await client.fetch(queryBySlug, { slug });
+};
+
+const queryAllSLugs = groq`*[_type == "post"] {slug}`;
+
+export const getAllSlugs = async () => {
+  return await client.fetch(queryAllSLugs);
 };
