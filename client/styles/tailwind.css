@@ -19,8 +19,8 @@ main {
     height: calc(100% - 12.5rem);
 }
 
-h1, h2, h3, p{
-    font-family: Inter, sans-serif;
+.header-container {
+    @apply h-24 border-b border-gray-300 flex items-center justify-between
 }
 
 .footer {
@@ -46,8 +46,6 @@ h1, h2, h3, p{
     position: relative;
     padding-bottom: calc(9 / 16 * 100%);
 }
-
-
 
 p {
     margin: 1.5rem 0;
@@ -91,9 +89,6 @@ blockquote:after {
      content: '\201D';
  }
 
-.letter-pressed {
-    text-shadow: 1px 1px rgba(255,255,255,0.8);
-}
 
 
 

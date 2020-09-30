@@ -7,18 +7,17 @@ import { useToggle } from "../../hooks/useToggle";
 
 const Header = () => {
   const { isToggled: isThemeChanged, toggle: changeTheme } = useToggle();
+
   return (
     <>
-      <div className="h-24 border-b border-gray-300 flex items-center justify-between">
+      <div className="header-container">
         <IconsBtn
           firstIcon={sunIcon}
           secondIcon={moonIcon}
           toggle={changeTheme}
           isToggled={isThemeChanged}
         />
-        <h1 className="header-title lg:text-4xl xl:text-5xl letter-pressed">
-          {MAIN_TITLE}
-        </h1>
+        <h1 className="header-title lg:text-4xl xl:text-5xl">{MAIN_TITLE}</h1>
         {searchIcon}
       </div>
       <Nav />
