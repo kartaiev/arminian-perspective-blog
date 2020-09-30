@@ -41,7 +41,7 @@ const App = ({ posts }) => {
       html.offsetHeight
     );
     const windowBottom = windowHeight + window.pageYOffset;
-    if (windowBottom >= docHeight) {
+    if (windowBottom >= docHeight - 10) {
       setSize(size + 1);
     } else {
       console.log("top");
