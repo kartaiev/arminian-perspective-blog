@@ -51,7 +51,7 @@ const App = ({ posts }) => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [window.scrollY]);
+  }, []);
 
   if (!paginatedPosts) return "loading";
 
