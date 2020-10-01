@@ -4,9 +4,10 @@ import { PAGE_SIZE } from "../lib/vars";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const getKey = (index, previousPageData) => {
-  console.log(index);
+  const offset = index * PAGE_SIZE;
+  console.log(offset);
   if (previousPageData && !previousPageData.length) return null;
-  return `/api/posts?offset=${index * PAGE_SIZE}`;
+  return `/api/posts?offset=${offset}`;
 };
 
 export const useGetPosts = (initialData) =>

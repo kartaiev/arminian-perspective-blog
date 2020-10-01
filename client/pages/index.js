@@ -11,6 +11,7 @@ import { GlobalContext } from "../context/global.context";
 import { useGetPosts } from "../actions";
 import Button from "@chakra-ui/core/dist/Button";
 import { Skeleton } from "@chakra-ui/core";
+import { PAGE_SIZE } from "../lib/vars";
 
 const App = ({ posts }) => {
   const { setListView, isListView, switchView } = useContext(GlobalContext);
@@ -25,13 +26,19 @@ const App = ({ posts }) => {
 
   const { data: paginatedPosts, size, setSize } = useGetPosts(initialData);
 
-  const increaseSize = () => setSize((prev) => prev + 1);
+  const isEmpty = paginatedPosts?.[0]?.length === 0;
+  const isReachingEnd =
+    isEmpty ||
+    (paginatedPosts &&
+      paginatedPosts[paginatedPosts.length - 1]?.length < PAGE_SIZE);
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => handleScroll(increaseSize));
-    return () =>
-      window.removeEventListener("scroll", () => handleScroll(increaseSize));
-  }, []);
+  const increaseSize = () => !isReachingEnd && setSize((prev) => prev + 1);
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", () => handleScroll(increaseSize));
+  //   return () =>
+  //     window.removeEventListener("scroll", () => handleScroll(increaseSize));
+  // }, []);
 
   if (!paginatedPosts) return "loading";
 
@@ -74,8 +81,8 @@ const App = ({ posts }) => {
       </Skeleton>
       <div className="flex  items-center justify-center my-6 lg:my-12 lg:mx-16 ip:mx-64">
         <Button
-          // className="border flex flex-col items-center justify-center border-gray-400  px-4 py-2 rounded-lg hover:border-gray-800"
-          onClick={() => setSize(size + 1)}
+          disabled={isReachingEnd}
+          onClick={() => !isReachingEnd && setSize(size + 1)}
           variant="outline"
         >
           {downChevron}

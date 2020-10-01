@@ -7,7 +7,6 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <GlobalProvider>
-        <CSSReset />
         <Component {...pageProps} />
       </GlobalProvider>
     </ThemeProvider>
