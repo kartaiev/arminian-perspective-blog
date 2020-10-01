@@ -32,13 +32,13 @@ const App = ({ posts }) => {
     (paginatedPosts &&
       paginatedPosts[paginatedPosts.length - 1]?.length < PAGE_SIZE);
 
-  const increaseSize = () => !isReachingEnd && setSize((prev) => prev + 1);
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => handleScroll(increaseSize));
-    return () =>
-      window.removeEventListener("scroll", () => handleScroll(increaseSize));
-  }, []);
+  // const increaseSize = () => !isReachingEnd && setSize((prev) => prev + 1);
+  //
+  // useEffect(() => {
+  //   window.addEventListener("scroll", () => handleScroll(increaseSize));
+  //   return () =>
+  //     window.removeEventListener("scroll", () => handleScroll(increaseSize));
+  // }, []);
 
   if (!paginatedPosts) return "loading";
 
