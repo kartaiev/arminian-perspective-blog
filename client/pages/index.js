@@ -21,11 +21,11 @@ const App = ({ posts }) => {
     width <= 768 && setListView(false);
   }, [width]);
 
-  const initialData = [posts];
-
-  const increaseSize = () => setSize(size + 1);
+  const initialData = posts && [posts];
 
   const { data: paginatedPosts, size, setSize } = useGetPosts(initialData);
+
+  const increaseSize = () => setSize((prev) => prev + 1);
 
   useEffect(() => {
     window.addEventListener("scroll", () => handleScroll(increaseSize));
