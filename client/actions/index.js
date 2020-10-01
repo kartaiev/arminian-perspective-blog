@@ -6,7 +6,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 const getKey = (index, previousPageData) => {
   const offset = index * PAGE_SIZE;
   console.log(offset);
-  if (previousPageData && !previousPageData.length) return null;
+
   return `/api/posts?offset=${offset}`;
 };
 

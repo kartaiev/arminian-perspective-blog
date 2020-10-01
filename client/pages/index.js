@@ -34,11 +34,11 @@ const App = ({ posts }) => {
 
   const increaseSize = () => !isReachingEnd && setSize((prev) => prev + 1);
 
-  // useEffect(() => {
-  //   window.addEventListener("scroll", () => handleScroll(increaseSize));
-  //   return () =>
-  //     window.removeEventListener("scroll", () => handleScroll(increaseSize));
-  // }, []);
+  useEffect(() => {
+    window.addEventListener("scroll", () => handleScroll(increaseSize));
+    return () =>
+      window.removeEventListener("scroll", () => handleScroll(increaseSize));
+  }, []);
 
   if (!paginatedPosts) return "loading";
 
