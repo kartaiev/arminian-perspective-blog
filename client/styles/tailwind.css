@@ -10,13 +10,14 @@ html {
 
 body {
     min-height: 100%;
-    display: grid;
-    grid-template-rows: 1fr auto;
+    display: flex;
+    flex-direction: column;
     padding: 0 1.5rem;
     font-family: Inter, sans-serif;
 }
 main {
     height: calc(100% - 12.5rem);
+
 }
 
 .header-container {
@@ -24,8 +25,7 @@ main {
 }
 
 .footer {
-    grid-row-start: 2;
-    grid-row-end: 3;
+
 }
 
 .active {
@@ -45,7 +45,9 @@ main {
     display: block;
     position: relative;
     padding-bottom: calc(9 / 16 * 100%);
+
 }
+
 
 p {
     margin: 1.5rem 0;

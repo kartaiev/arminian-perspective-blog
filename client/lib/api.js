@@ -4,11 +4,12 @@ import { PAGE_SIZE } from "./vars";
 
 const queryAll = (offset) => groq`*[_type == "post"][${offset}...${
   offset + PAGE_SIZE
-}]  | order(publishedAt desc) {
+}]  | order(_updatedAt desc) {
   _id,
   title,
   subtitle,
   publishedAt,
+  _updatedAt,
   slug,
   mainImage,
 }`;
@@ -21,6 +22,7 @@ const queryBySlug = groq`*[_type == "post" && slug.current == $slug][0]{
   title,
   subtitle,
   publishedAt,
+  _updatedAt,
   "name": author->name,
   mainImage,
   "categories": categories[]->title,

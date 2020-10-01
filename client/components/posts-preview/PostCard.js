@@ -28,10 +28,10 @@ const PostCard = ({ slug, mainImage, subtitle, publishedAt, title }) => {
       <Link href="/post/[slug]" as={`/post/${slug.current}`}>
         <motion.a whileHover="hover" variants={variants} className={cardClass}>
           <PostCover mainImage={mainImage} title={title} />
-          <div className="h-full w-full p-6 relative flex flex-col justify-between">
-            <div className="pb-12">
-              <h1 className="font-bold text-gray-800 text-2xl mb-4">{title}</h1>
-              <h2 className="text-gray-600">{subtitle}</h2>
+          <div className="h-64 w-full p-4 flex flex-col justify-between">
+            <div>
+              <h1 className="font-bold text-gray-800 text-2xl">{title}</h1>
+              <h2 className="mt-6 text-gray-600">{subtitle}</h2>
             </div>
             <PostAuthorDate secondProp={""} publishedAt={publishedAt} />
           </div>
