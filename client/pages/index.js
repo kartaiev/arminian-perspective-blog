@@ -9,6 +9,8 @@ import { handleScroll } from "../lib/helpers";
 import { GlobalContext } from "../context/global.context";
 
 import { useGetPosts } from "../actions";
+import Button from "@chakra-ui/core/dist/Button";
+import { Skeleton } from "@chakra-ui/core";
 
 const App = ({ posts }) => {
   const { setListView, isListView, switchView } = useContext(GlobalContext);
@@ -55,11 +57,6 @@ const App = ({ posts }) => {
 
   return (
     <Layout>
-      {!paginatedPosts && (
-        <div className="h-full w-full flex items-center justify-center">
-          loading...
-        </div>
-      )}
       <div className="hidden h-10 mt-6 justify-start items-center lg:flex md:px-16 xl:px-16 ip:px-64">
         <IconsBtn
           firstIcon={gridIcon}
@@ -68,18 +65,21 @@ const App = ({ posts }) => {
           isToggled={isListView}
         />
       </div>
-      <div
-        className={`mb-6 grid grid-cols-1 gap-6 lg:mx-16 ip:mx-64 ${gridClass}`}
-      >
-        {previews}
-      </div>
+      <Skeleton isLoaded={paginatedPosts}>
+        <div
+          className={`mb-6 grid grid-cols-1 gap-6 lg:mx-16 ip:mx-64 ${gridClass}`}
+        >
+          {previews}
+        </div>
+      </Skeleton>
       <div className="flex  items-center justify-center my-6 lg:my-12 lg:mx-16 ip:mx-64">
-        <button
-          className="border flex flex-col items-center justify-center border-gray-400  px-4 py-2 rounded-lg hover:border-gray-800"
+        <Button
+          // className="border flex flex-col items-center justify-center border-gray-400  px-4 py-2 rounded-lg hover:border-gray-800"
           onClick={() => setSize(size + 1)}
+          variant="outline"
         >
           {downChevron}
-        </button>
+        </Button>
       </div>
     </Layout>
   );

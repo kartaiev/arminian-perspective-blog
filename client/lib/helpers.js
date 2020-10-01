@@ -20,5 +20,8 @@ export const handleScroll = (func) => {
     html.offsetHeight
   );
   const windowBottom = windowHeight + window.pageYOffset;
-  windowBottom >= docHeight - 5 && func();
+  if (windowBottom >= docHeight - 10) {
+    console.log("bottom");
+    func();
+  }
 };
