@@ -6,13 +6,10 @@ const navLinks = () => {
   const pathName = useRouter().pathname;
 
   return navPages.map(({ label, path }) => {
+    const linkClass = pathName === path ? "link-active" : "link-inactive";
+
     return (
-      <li
-        key={path}
-        className={
-          pathName === path ? "active" : "inactive hover:border-gray-400"
-        }
-      >
+      <li key={path} className={`link ${linkClass}`}>
         <Link href={path}>
           <a className="border-none">{label}</a>
         </Link>

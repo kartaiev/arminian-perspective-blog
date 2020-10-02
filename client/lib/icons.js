@@ -119,19 +119,22 @@ export const leftArrow = (
   </svg>
 );
 
-export const downChevron = (
-  <svg
-    className="w-6 h-6 inline"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M19 9l-7 7-7-7"
-    />
-  </svg>
-);
+export const downChevron = (isReachingEnd) => {
+  const bounce = !isReachingEnd && "animate-bounce pt-3 w-8 h-8";
+  return (
+    <svg
+      className={`w-6 h-6 inline ${bounce}`}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  );
+};

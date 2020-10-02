@@ -1,10 +1,10 @@
 import React from "react";
 import Layout from "components/layout/Layout";
 import { getSinglePost, getAllPosts } from "lib/api";
-import PostCover from "../../components/PostCover";
+import PostCover from "../../components/shared/PostCover";
 import PostBody from "../../components/single-post/PostBody";
-import PostAuthorDate from "../../components/single-post/PostAuthorDate";
-import PostCategories from "../../components/single-post/PostCatigories";
+import AuthorDate from "../../components/shared/AuthorDate";
+import PostCategories from "../../components/single-post/PostCategories";
 import { getAllSlugs } from "../../lib/api";
 
 export async function getStaticProps({ params }) {
@@ -31,7 +31,7 @@ const Post = ({
 }) => {
   return (
     <Layout>
-      <article className="h-full xl:max-w-5xl py-6 mx-auto mb-20 text-gray-800">
+      <article className="article-container">
         {mainImage && <PostCover mainImage={mainImage} title={title} />}
         <PostBody
           title={title}

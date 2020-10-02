@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import Layout from "../components/layout/Layout";
 import { getAllPosts } from "../lib/api";
-import IconsBtn from "../components/IconsBtn";
+import IconsBtn from "../components/shared/IconsBtn";
 import { downChevron, gridIcon, listIcon } from "../lib/icons";
 import PostCard from "../components/posts-preview/PostCard";
 import { useWindowWidth } from "../hooks/useWindowWidth";
@@ -58,34 +58,31 @@ const App = ({ posts }) => {
       ))
     );
 
-  const gridClass = isListView
-    ? "md:mx-16"
+  const previewClass = isListView
+    ? "md:mx-16 ip:mx-64"
     : "lg:grid-cols-2 lg:mt-2 ip:grid-cols-3 xl:gap-12";
 
   return (
     <Layout>
-      <div className="hidden h-10 mt-6 justify-start items-center lg:flex md:px-16 xl:px-16 ip:px-64">
+      <div className="view-button-container">
         <IconsBtn
           firstIcon={gridIcon}
           secondIcon={listIcon}
           toggle={switchView}
           isToggled={isListView}
+          className="ease"
         />
       </div>
       <Skeleton isLoaded={paginatedPosts}>
-        <div
-          className={`mb-6 grid grid-cols-1 gap-6 lg:mx-16 ip:mx-64 ${gridClass}`}
-        >
-          {previews}
-        </div>
+        <div className={`preview-container ${previewClass}`}>{previews}</div>
       </Skeleton>
-      <div className="flex  items-center justify-center my-6 lg:my-12 lg:mx-16 ip:mx-64">
+      <div className="preview-button-container">
         <Button
           disabled={isReachingEnd}
           onClick={() => !isReachingEnd && setSize(size + 1)}
           variant="outline"
         >
-          {downChevron}
+          {downChevron(isReachingEnd)}
         </Button>
       </div>
     </Layout>

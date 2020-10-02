@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "components/layout/Nav";
 import { moonIcon, searchIcon, sunIcon } from "../../lib/icons";
-import IconsBtn from "../IconsBtn";
+import IconsBtn from "../shared/IconsBtn";
 import { MAIN_TITLE } from "../../lib/vars";
 import { useToggle } from "../../hooks/useToggle";
 
@@ -16,8 +16,9 @@ const Header = () => {
           secondIcon={moonIcon}
           toggle={changeTheme}
           isToggled={isThemeChanged}
+          className="ease"
         />
-        <h1 className="header-title lg:text-4xl xl:text-5xl">{MAIN_TITLE}</h1>
+        <h1 className="header-title">{MAIN_TITLE}</h1>
         {searchIcon}
       </div>
       <Nav />
