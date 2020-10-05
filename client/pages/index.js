@@ -79,6 +79,8 @@ const App = ({ posts }) => {
       <div className="preview-button-container">
         <Button
           disabled={isReachingEnd}
+          size="lg"
+          rounded="full"
           onClick={() => !isReachingEnd && setSize(size + 1)}
           variant="outline"
         >

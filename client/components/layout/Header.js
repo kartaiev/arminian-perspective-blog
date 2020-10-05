@@ -4,9 +4,13 @@ import { moonIcon, searchIcon, sunIcon } from "../../lib/icons";
 import IconsBtn from "../shared/IconsBtn";
 import { MAIN_TITLE } from "../../lib/vars";
 import { useToggle } from "../../hooks/useToggle";
+import SearchInput from "./SearchInput";
 
 const Header = () => {
   const { isToggled: isThemeChanged, toggle: changeTheme } = useToggle();
+  const { isToggled: isSearchInput, toggle: switchToSearchInput } = useToggle();
+
+  const headerTitleClass = isSearchInput && "ml-300px";
 
   return (
     <>
@@ -16,10 +20,14 @@ const Header = () => {
           secondIcon={moonIcon}
           toggle={changeTheme}
           isToggled={isThemeChanged}
-          className="ease"
         />
-        <h1 className="header-title">{MAIN_TITLE}</h1>
-        {searchIcon}
+        <h1 className={`header-title ${headerTitleClass}`}>{MAIN_TITLE}</h1>
+
+        {isSearchInput ? (
+          <SearchInput switchToSearchInput={switchToSearchInput} />
+        ) : (
+          <button onClick={switchToSearchInput}>{searchIcon}</button>
+        )}
       </div>
       <Nav />
     </>

@@ -120,7 +120,7 @@ export const leftArrow = (
 );
 
 export const downChevron = (isReachingEnd) => {
-  const bounce = !isReachingEnd && "animate-bounce pt-3 w-8 h-8";
+  const bounce = !isReachingEnd && "animate-bounce pt-3 w-10 h-10";
   return (
     <svg
       className={`w-6 h-6 inline ${bounce}`}
