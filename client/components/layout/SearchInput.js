@@ -27,7 +27,7 @@ const SearchInput = ({ switchToSearchInput }) => {
         onKeyDown={handleKeyDown}
         placeholder="поиск"
         borderColor="gray.300"
-        width="300px"
+        width={{ base: "250px", lg: "300px" }}
         variant="outline"
         rounded="full"
         _focus={{ bg: "white", borderColor: "gray.900" }}
@@ -40,7 +40,7 @@ const SearchInput = ({ switchToSearchInput }) => {
             onClick={handleClick}
             name="search"
             color="gray.900"
-            size="26px"
+            size={{ base: "20px", lg: "24px" }}
             cursor="pointer"
           />
         }

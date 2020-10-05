@@ -5,10 +5,12 @@ import IconsBtn from "../shared/IconsBtn";
 import { MAIN_TITLE } from "../../lib/vars";
 import { useToggle } from "../../hooks/useToggle";
 import SearchInput from "./SearchInput";
+import { useWindowWidth } from "../../hooks/useWindowWidth";
 
 const Header = () => {
   const { isToggled: isThemeChanged, toggle: changeTheme } = useToggle();
   const { isToggled: isSearchInput, toggle: switchToSearchInput } = useToggle();
+  const width = useWindowWidth();
 
   const headerTitleClass = isSearchInput && "ml-300px";
 
@@ -21,7 +23,13 @@ const Header = () => {
           toggle={changeTheme}
           isToggled={isThemeChanged}
         />
-        <h1 className={`header-title ${headerTitleClass}`}>{MAIN_TITLE}</h1>
+        {width >= 1024 ? (
+          <h1 className={`header-title ${headerTitleClass}`}>{MAIN_TITLE}</h1>
+        ) : (
+          !isSearchInput && (
+            <h1 className={`header-title ${headerTitleClass}`}>{MAIN_TITLE}</h1>
+          )
+        )}
 
         {isSearchInput ? (
           <SearchInput switchToSearchInput={switchToSearchInput} />
