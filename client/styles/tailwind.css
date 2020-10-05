@@ -176,6 +176,10 @@ main {
 
 
 @screen md {
+    .header-title {
+        @apply text-3xl
+    }
+
     .nav-list-container {
         @apply text-lg
     }

@@ -7,7 +7,7 @@ module.exports = {
       },
       spacing: {
         mk: "2px",
-        "300px": "268px",
+        "300px": "276px",
       },
       fontFamily: {
         primary: ["Inter"],

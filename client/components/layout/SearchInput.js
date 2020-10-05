@@ -33,15 +33,16 @@ const SearchInput = ({ switchToSearchInput }) => {
         _focus={{ bg: "white", borderColor: "gray.900" }}
       />
       <InputRightElement
-        roundedRight="full"
-        _focus={{ bg: "white", borderColor: "gray.900" }}
+        rounded="full"
+        bg="gray.900"
+        cursor="pointer"
+        _hover={{ bg: "white", borderColor: "gray.50" }}
         children={
           <Icon
             onClick={handleClick}
-            name="search"
-            color="gray.900"
+            name="search-2"
+            color="white"
             size={{ base: "20px", lg: "24px" }}
-            cursor="pointer"
           />
         }
       />
