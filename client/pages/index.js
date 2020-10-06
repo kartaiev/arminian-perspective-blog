@@ -7,14 +7,19 @@ import PostCard from "../components/posts-preview/PostCard";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 import { handleScroll } from "../lib/helpers";
 import { GlobalContext } from "../context/global.context";
-
+import { FiList, FiGrid } from "react-icons/fi";
 import { useGetPosts } from "../actions";
 import Button from "@chakra-ui/core/dist/Button";
-import { Skeleton } from "@chakra-ui/core";
+import { Skeleton, useColorMode } from "@chakra-ui/core";
 import { PAGE_SIZE } from "../lib/vars";
+import { BsGrid } from "react-icons/bs";
+import Box from "@chakra-ui/core/dist/Box";
+import { borderColor, color } from "../customTheme";
 
 const App = ({ posts }) => {
   const { setListView, isListView, switchView } = useContext(GlobalContext);
+
+  const { colorMode } = useColorMode();
 
   const width = useWindowWidth();
 
@@ -59,22 +64,28 @@ const App = ({ posts }) => {
     );
 
   const previewClass = isListView
-    ? "md:mx-16 ip:mx-64"
+    ? "md:mx-16 ip:ml-64"
     : "lg:grid-cols-2 lg:mt-2 ip:grid-cols-3 xl:gap-12";
 
   return (
     <Layout>
       <div className="view-button-container">
         <IconsBtn
-          firstIcon={gridIcon}
-          secondIcon={listIcon}
+          whileHover={{ scale: 1.2 }}
+          firstIcon={BsGrid}
+          secondIcon={FiList}
           toggle={switchView}
           isToggled={isListView}
           className="ease"
         />
       </div>
       <Skeleton isLoaded={paginatedPosts}>
-        <div className={`preview-container ${previewClass}`}>{previews}</div>
+        <Box
+          color={color[colorMode]}
+          className={`preview-container ${previewClass}`}
+        >
+          {previews}
+        </Box>
       </Skeleton>
       <div className="preview-button-container">
         <Button
@@ -83,6 +94,8 @@ const App = ({ posts }) => {
           rounded="full"
           onClick={() => !isReachingEnd && setSize(size + 1)}
           variant="outline"
+          borderColor={borderColor[colorMode]}
+          _focus={{ outline: "none" }}
         >
           {downChevron(isReachingEnd)}
         </Button>

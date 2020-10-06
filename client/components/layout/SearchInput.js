@@ -1,11 +1,31 @@
 import React, { useState } from "react";
 import Input from "@chakra-ui/core/dist/Input";
-import { InputRightElement, Icon, InputGroup } from "@chakra-ui/core";
+import {
+  IconButton,
+  InputGroup,
+  InputRightElement,
+  useColorMode,
+} from "@chakra-ui/core";
+import { FiSearch } from "react-icons/fi";
+import Box from "@chakra-ui/core/dist/Box";
+import { motion } from "framer-motion";
+import {
+  bgColor,
+  bgColorReversed,
+  borderColor,
+  color,
+  colorReversed,
+} from "../../customTheme";
 
 const SearchInput = ({ switchToSearchInput }) => {
   const [value, setValue] = useState("");
 
   const handleChange = (e) => setValue(e.target.value);
+
+  const { colorMode } = useColorMode();
+
+  const MotionInput = motion.custom(Input);
+  const MotionRightEl = motion.custom(InputRightElement);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -21,28 +41,35 @@ const SearchInput = ({ switchToSearchInput }) => {
 
   return (
     <InputGroup>
-      <Input
+      <MotionInput
+        layout
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         value={value}
+        autoFocus
+        onBlur={switchToSearchInput}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         placeholder="поиск"
-        borderColor="gray.300"
+        borderColor={borderColor[colorMode]}
         width={{ base: "250px", lg: "300px" }}
         variant="outline"
         rounded="full"
-        _focus={{ bg: "white", borderColor: "gray.900" }}
+        _focus={{ outline: "none" }}
       />
-      <InputRightElement
+      <MotionRightEl
+        initial={{ opacity: 0, x: 0 }}
+        animate={{ opacity: 1, x: 0 }}
         rounded="full"
-        bg="gray.900"
+        bg={bgColorReversed[colorMode]}
         cursor="pointer"
         _hover={{ bg: "white", borderColor: "gray.50" }}
         children={
-          <Icon
+          <Box
             onClick={handleClick}
-            name="search-2"
-            color="white"
-            size={{ base: "20px", lg: "24px" }}
+            as={FiSearch}
+            color={colorReversed[colorMode]}
+            size={{ base: "20px", lg: "30px" }}
           />
         }
       />

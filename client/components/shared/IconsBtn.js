@@ -1,15 +1,26 @@
 import React from "react";
+import { IconButton, useColorMode } from "@chakra-ui/core";
 import { motion } from "framer-motion";
+import { color } from "../../customTheme";
 
 const IconsBtn = ({ firstIcon, secondIcon, toggle, isToggled }) => {
+  const MotionIconBtn = motion.custom(IconButton);
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
-    <motion.button
+    <MotionIconBtn
+      color={color[colorMode]}
       whileHover={{ scale: 1.2 }}
+      variant="unstyled"
+      display="flex"
+      alignItems="center"
+      justifyContent="start"
       onClick={toggle}
-      className="focus:outline-none ease"
-    >
-      {isToggled ? firstIcon : secondIcon}
-    </motion.button>
+      fontSize="30px"
+      icon={isToggled ? firstIcon : secondIcon}
+      aria-label="icon-button"
+      _focus={{ outline: "none" }}
+    />
   );
 };
 

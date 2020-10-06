@@ -13,8 +13,8 @@
         min-height: 100%;
         display: grid;
         grid-template-rows: 1fr auto;
-        padding: 0 1.5rem;
         font-family: Inter, sans-serif;
+
     }
 
     p {
@@ -66,16 +66,16 @@
 }
 
 .header-container {
-    @apply h-24 border-b border-gray-300 text-center flex items-center justify-between
+    @apply h-24  text-center flex items-center justify-between
 }
 
 .header-title {
-    @apply uppercase text-gray-800 text-center text-xl font-bold justify-self-center inline-block;
+    @apply uppercase  font-bold inline-block;
     word-spacing: .5rem;
 }
 
 .nav-container {
-    @apply h-10 w-full border-b border-gray-300 flex items-center justify-center
+    @apply h-10 w-full flex items-center justify-center
 }
 
 .nav-list-container {
@@ -83,20 +83,13 @@
 }
 
 .nav-list-container-mobile {
-    @apply h-40 py-2 list-none flex items-center justify-center flex-wrap border-b border-gray-300
+    @apply py-2 list-none flex items-center justify-center flex-wrap border-b
 }
 
 .link {
-    @apply border rounded-full px-4 py-2 cursor-pointer ease
+    @apply rounded-full px-4 py-2 cursor-pointer ease
 }
 
-.link-active {
-    @apply border-gray-400
-}
-
-.link-inactive {
-    @apply border-transparent
-}
 
 
 .link-inactive:hover {
@@ -125,7 +118,7 @@ main {
 }
 
 .card-container {
-    @apply mt-6 border border-gray-400 rounded-lg overflow-hidden ease shadow
+    @apply ease
 }
 
 .card-container:hover {
@@ -202,9 +195,7 @@ main {
         @apply text-xl flex items-center justify-around
     }
 
-    .header-title {
-        @apply text-4xl
-    }
+
 
     .menu-button {
         @apply hidden
@@ -232,16 +223,12 @@ main {
         @apply w-3/4 px-12
     }
 
-    .header-title {
-        @apply text-5xl
-    }
-
     .view-button-container {
         @apply px-16
     }
 
     .article-container {
-        @apply max-w-5xl
+        @apply max-w-6xl
     }
 
     .article-body-title {

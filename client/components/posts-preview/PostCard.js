@@ -4,9 +4,17 @@ import { motion } from "framer-motion";
 import AuthorDate from "../shared/AuthorDate";
 import PostCover from "../shared/PostCover";
 import { GlobalContext } from "../../context/global.context";
+import Box from "@chakra-ui/core/dist/Box";
+import Heading from "@chakra-ui/core/dist/Heading";
+import { borderColor, color } from "../../customTheme";
+import { useColorMode } from "@chakra-ui/core";
 
 const PostCard = ({ slug, mainImage, subtitle, publishedAt, title }) => {
   const { isListView } = useContext(GlobalContext);
+
+  const MotionBox = motion.custom(Box);
+
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const variants = {
     hover: {
@@ -22,20 +30,34 @@ const PostCard = ({ slug, mainImage, subtitle, publishedAt, title }) => {
   return (
     slug && (
       <Link href="/post/[slug]" as={`/post/${slug.current}`}>
-        <motion.a
+        <MotionBox
+          as="a"
+          mt="3"
+          shadow="sm"
           whileHover="hover"
           variants={variants}
+          borderWidth="1px"
+          borderColor={borderColor[colorMode]}
+          rounded="lg"
+          overflow="hidden"
           className={`card-container ${cardClass}`}
         >
           <PostCover mainImage={mainImage} title={title} />
           <div className="card-content">
             <div>
-              <h1 className="card-title">{title}</h1>
+              <Heading
+                color={color[colorMode]}
+                fontSize="2xl"
+                as="h1"
+                className="card-title"
+              >
+                {title}
+              </Heading>
               <h2 className={`card-subtitle ${subtitleClass}`}>{subtitle}</h2>
             </div>
             <AuthorDate secondProp={""} publishedAt={publishedAt} />
           </div>
-        </motion.a>
+        </MotionBox>
       </Link>
     )
   );

@@ -6,6 +6,7 @@ import PostBody from "../../components/single-post/PostBody";
 import AuthorDate from "../../components/shared/AuthorDate";
 import PostCategories from "../../components/single-post/PostCategories";
 import { getAllSlugs } from "../../lib/api";
+import Box from "@chakra-ui/core/dist/Box";
 
 export async function getStaticProps({ params }) {
   const post = await getSinglePost(params.slug);
@@ -31,7 +32,7 @@ const Post = ({
 }) => {
   return (
     <Layout>
-      <article className="article-container">
+      <Box as="article" className="article-container">
         {mainImage && <PostCover mainImage={mainImage} title={title} />}
         <PostBody
           title={title}
@@ -39,9 +40,9 @@ const Post = ({
           body={body}
           publishedAt={publishedAt}
           name={name}
+          categories={categories}
         />
-        {categories && <PostCategories categories={categories} />}
-      </article>
+      </Box>
     </Layout>
   );
 };
