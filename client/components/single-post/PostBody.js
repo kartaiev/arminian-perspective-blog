@@ -4,21 +4,14 @@ import AuthorDate from "../shared/AuthorDate";
 import Box from "@chakra-ui/core/dist/Box";
 import Heading from "@chakra-ui/core/dist/Heading";
 import { useColorMode } from "@chakra-ui/core";
-import { color, colorAlt, borderColor } from "../../customTheme";
-import Grid from "@chakra-ui/core/dist/Grid";
-import Divider from "@chakra-ui/core/dist/Divider";
+import { color, colorAlt } from "../../customTheme";
 import PostCategories from "./PostCategories";
 
 const PostBody = ({ body, title, subtitle, publishedAt, name, categories }) => {
   const { colorMode } = useColorMode();
 
   return (
-    <Grid
-      templateColumns="3fr auto 1fr"
-      gap={6}
-      color={color[colorMode]}
-      className="article-body-container"
-    >
+    <>
       <Box>
         <AuthorDate publishedAt={publishedAt} secondProp={name} />
         <Heading
@@ -40,13 +33,9 @@ const PostBody = ({ body, title, subtitle, publishedAt, name, categories }) => {
         </Heading>
         <BlockContent className="my-6" blocks={body} />
       </Box>
-      <Divider
-        borderColor={borderColor[colorMode]}
-        orientation="vertical"
-        my="6"
-      />
+
       <Box>{categories && <PostCategories categories={categories} />}</Box>
-    </Grid>
+    </>
   );
 };
 

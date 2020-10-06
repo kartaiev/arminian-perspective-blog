@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   const { colorMode } = useColorMode();
 
   return (
-    <Box h="100%" bg={bgColor[colorMode]} px="6" overflowX="hidden" w="100%">
+    <Box h="100%" px="6" bg={bgColor[colorMode]}>
       <Header />
       <main>{children}</main>
       <Footer />

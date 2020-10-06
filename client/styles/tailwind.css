@@ -220,7 +220,7 @@ main {
 
 @screen xl {
     .nav-list-container {
-        @apply w-3/4 px-12
+        @apply w-2/3 px-12
     }
 
     .view-button-container {
@@ -242,14 +242,14 @@ main {
 
 @screen ip {
     .view-button-container {
-        @apply px-64
+        @apply pl-48
     }
     .preview-container {
-        @apply mx-64
+        @apply ml-48
     }
 
     .preview-button-container {
-        @apply mx-64
+        @apply ml-48
     }
 }
 

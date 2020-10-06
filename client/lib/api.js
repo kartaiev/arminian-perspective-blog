@@ -4,7 +4,7 @@ import { PAGE_SIZE } from "./vars";
 
 const queryAll = (offset) => groq`*[_type == "post"][${offset}...${
   offset + PAGE_SIZE
-}]  | order(_updatedAt desc) {
+}]  | order(publishedAt desc) {
   _id,
   title,
   subtitle,
