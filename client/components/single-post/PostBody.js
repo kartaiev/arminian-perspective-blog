@@ -12,7 +12,7 @@ const PostBody = ({ body, title, subtitle, publishedAt, name, categories }) => {
 
   return (
     <>
-      <Box>
+      <Box color={color[colorMode]}>
         <AuthorDate publishedAt={publishedAt} secondProp={name} />
         <Heading
           as="h1"
