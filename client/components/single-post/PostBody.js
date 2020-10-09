@@ -1,9 +1,7 @@
 import React from "react";
 import BlockContent from "@sanity/block-content-to-react";
 import AuthorDate from "../shared/AuthorDate";
-import Box from "@chakra-ui/core/dist/Box";
-import Heading from "@chakra-ui/core/dist/Heading";
-import { useColorMode } from "@chakra-ui/core";
+import { useColorMode, Heading, Box } from "@chakra-ui/core";
 import { color, colorAlt } from "../../customTheme";
 import PostCategories from "./PostCategories";
 
