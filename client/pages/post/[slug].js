@@ -1,10 +1,11 @@
 import React from "react";
-import Layout from "components/layout/Layout";
+import MainLayout from "components/layout/MainLayout";
 import { getSinglePost } from "lib/api";
 import PostCover from "../../components/shared/PostCover";
 import PostBody from "../../components/single-post/PostBody";
 import { getAllSlugs } from "../../lib/api";
 import Box from "@chakra-ui/core/dist/Box";
+import PostLayout from "../../components/layout/PostLayout";
 
 export async function getStaticProps({ params }) {
   const post = await getSinglePost(params.slug);
@@ -29,7 +30,7 @@ const Post = ({
   post: { mainImage, title, subtitle, publishedAt, name, body, categories },
 }) => {
   return (
-    <Layout>
+    <PostLayout>
       <Box as="article" className="article-container">
         {mainImage && <PostCover mainImage={mainImage} title={title} />}
         <PostBody
@@ -41,7 +42,7 @@ const Post = ({
           categories={categories}
         />
       </Box>
-    </Layout>
+    </PostLayout>
   );
 };
 

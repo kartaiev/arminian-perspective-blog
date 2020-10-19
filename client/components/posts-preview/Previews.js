@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PostCard from "./PostCard";
-import { useGetPosts } from "../../actions";
+import { useGetPosts, useGetPostsByCategory } from "../../actions";
 import { PAGE_SIZE } from "../../lib/vars";
 import IconsBtn from "../shared/IconsBtn";
 import { BsGrid } from "react-icons/bs";
@@ -20,6 +20,9 @@ const Previews = ({ posts }) => {
   const initialData = posts && [posts];
 
   const { data: paginatedPosts, size, setSize } = useGetPosts(initialData);
+  const { data } = useGetPostsByCategory("faith");
+
+  data && console.log(data);
 
   if (!paginatedPosts) return "loading";
 

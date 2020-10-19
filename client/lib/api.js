@@ -12,10 +12,30 @@ const queryAll = (offset) => groq`*[_type == "post"][${offset}...${
   _updatedAt,
   slug,
   mainImage,
+  "categories": categories[]->title,
 }`;
 
 export const getAllPosts = async (offset) => {
   return await client.fetch(queryAll(offset));
+};
+
+const queryByCategory = (
+  offset,
+  category
+) => groq`*[_type == "post" && ${category} in categories][${offset}...${
+  offset + PAGE_SIZE
+}]  | order(publishedAt desc) {
+  _id,
+  title,
+  subtitle,
+  publishedAt,
+  _updatedAt,
+  slug,
+  mainImage,
+}`;
+
+export const getPostsByCategory = async (offset, category) => {
+  return await client.fetch(queryByCategory(offset, category));
 };
 
 const queryBySlug = groq`*[_type == "post" && slug.current == $slug][0]{

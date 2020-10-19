@@ -1,10 +1,10 @@
-import Layout from "../components/layout/Layout";
+import MainLayout from "../components/layout/MainLayout";
 
 const Statement = () => {
   return (
-    <Layout>
+    <MainLayout>
       <h1>Statement</h1>
-    </Layout>
+    </MainLayout>
   );
 };
 

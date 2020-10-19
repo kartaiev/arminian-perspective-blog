@@ -11,3 +11,9 @@ const getKey = (index, previousPageData) => {
 
 export const useGetPosts = (initialData) =>
   useSWRInfinite(getKey, fetcher, { initialData });
+
+export const useGetPostsByCategory = (category) =>
+  useSWRInfinite(
+    (index) => `/api/category?category=${category}&offset=${index * PAGE_SIZE}`,
+    fetcher
+  );
