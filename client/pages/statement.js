@@ -1,9 +1,11 @@
 import MainLayout from "../components/layout/MainLayout";
+import { Box } from "@chakra-ui/core";
+import React from "react";
 
 const Statement = () => {
   return (
     <MainLayout>
-      <h1>Statement</h1>
+      <Box>Statement</Box>
     </MainLayout>
   );
 };

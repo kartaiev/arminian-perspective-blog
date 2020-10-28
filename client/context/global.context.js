@@ -1,11 +1,12 @@
 import React, { createContext } from "react";
 import { useToggle } from "../hooks/useToggle";
-import { useWindowWidth } from "../hooks/useWindowWidth";
+import { useWindowSize } from "../hooks/useWindowSize";
 
 export const GlobalContext = createContext(undefined);
 
 export const GlobalProvider = ({ children }) => {
-  const width = useWindowWidth();
+  const width = useWindowSize().width;
+  console.log(width);
 
   const {
     isToggled: isListView,

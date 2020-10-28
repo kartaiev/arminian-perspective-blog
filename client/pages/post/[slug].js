@@ -1,9 +1,7 @@
 import React from "react";
-import MainLayout from "components/layout/MainLayout";
-import { getSinglePost } from "lib/api";
 import PostCover from "../../components/shared/PostCover";
 import PostBody from "../../components/single-post/PostBody";
-import { getAllSlugs } from "../../lib/api";
+import { getAllSlugs, getSinglePost } from "../../lib/api";
 import Box from "@chakra-ui/core/dist/Box";
 import PostLayout from "../../components/layout/PostLayout";
 
