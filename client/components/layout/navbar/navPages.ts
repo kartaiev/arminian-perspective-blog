@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { IPAD_BREAKPOINT } from "../../../lib/vars";
-import { GlobalContext } from "../../../context/global.context";
+import { GlobalContext } from "../../../context/globalContext";
 import { fullNavPages, shortNavPages } from "../../../lib/pages";
 
 export default () => {

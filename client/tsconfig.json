@@ -21,7 +21,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "../../../Library/Caches/JetBrains/WebStorm2020.2/javascript/typings/node/14.14.5/node_modules/@types/node/globals.d.ts"
   ],
   "exclude": [
     "node_modules"

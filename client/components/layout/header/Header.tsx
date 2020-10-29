@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { Box, Flex, Heading, useColorMode } from "@chakra-ui/core";
 import { borderColor, color } from "../../../customTheme";
 import React from "react";
-import { AnimateSharedLayout } from "framer-motion";
 
 const Header = () => {
   const { isToggled: isThemeChanged, toggle: changeTheme } = useToggle();
@@ -44,6 +43,7 @@ const Header = () => {
           as="h1"
           color={color[colorMode]}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl", xl: "5xl" }}
+          // fontFamily='EB Garamond'
           className={`header-title ${headerTitleClass}`}
         >
           {MAIN_TITLE}

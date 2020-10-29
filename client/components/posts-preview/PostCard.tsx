@@ -3,17 +3,15 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AuthorDate from "../shared/AuthorDate";
 import PostCover from "../shared/PostCover";
-import { GlobalContext } from "../../context/global.context";
+import { GlobalContext } from "../../context/globalContext";
 import Box from "@chakra-ui/core/dist/Box";
 import Heading from "@chakra-ui/core/dist/Heading";
 import { borderColor, color } from "../../customTheme";
 import { useColorMode } from "@chakra-ui/core";
-import {IAllPosts} from '../../interfaces/IAllPosts';
-import {JSX} from '@babel/types';
+import {IPost} from '../../interfaces/IPost';
 
-const PostCard: ReactNode = ({ slug, mainImage, subtitle, publishedAt, title }: IAllPosts) => {
+const PostCard = ({ slug, mainImage, subtitle, publishedAt, title, name }: IPost) => {
   const { isListView } = useContext(GlobalContext);
-    console.log(typeof slug)
 
   const MotionBox = motion.custom(Box);
 
@@ -58,7 +56,7 @@ const PostCard: ReactNode = ({ slug, mainImage, subtitle, publishedAt, title }: 
               </Heading>
               <h2 className={`card-subtitle ${subtitleClass}`}>{subtitle}</h2>
             </div>
-            <AuthorDate secondProp={""} publishedAt={publishedAt} />
+            <AuthorDate secondProp={name} publishedAt={publishedAt} />
           </div>
         </MotionBox>
       </Link>

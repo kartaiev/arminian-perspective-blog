@@ -1,7 +1,7 @@
 import client from "./client";
 import groq from "groq";
 import { PAGE_SIZE } from "./vars";
-import { IAllPosts } from "../interfaces/IAllPosts";
+import { IPost } from "../interfaces/IPost";
 
 const queryAll = (offset: number) => groq`*[_type == "post"][${offset}...${
   offset + PAGE_SIZE
@@ -12,11 +12,12 @@ const queryAll = (offset: number) => groq`*[_type == "post"][${offset}...${
   publishedAt,
   _updatedAt,
   slug,
-  mainImage,
+  'mainImage': mainImage.asset->url,
   "categories": categories[]->title,
+  "name": author->name,
 }`;
 
-export const getAllPosts = async (offset: number): Promise<IAllPosts[]> => {
+export const getAllPosts = async (offset: number): Promise<IPost[]> => {
   return await client.fetch(queryAll(offset));
 };
 
@@ -32,7 +33,8 @@ const queryByCategory = (
   publishedAt,
   _updatedAt,
   slug,
-  mainImage,
+  'mainImage': mainImage.asset->url,
+  "name": author->name,
 }`;
 
 export const getPostsByCategory = async (offset, category) => {
@@ -45,17 +47,17 @@ const queryBySlug = groq`*[_type == "post" && slug.current == $slug][0]{
   publishedAt,
   _updatedAt,
   "name": author->name,
-  mainImage,
+  'mainImage': mainImage.asset->url,
   "categories": categories[]->title,
   body
 }`;
 
-export const getSinglePost = async (slug) => {
+export const getSinglePost = async (slug: string): Promise<IPost> => {
   return await client.fetch(queryBySlug, { slug });
 };
 
 const queryAllSLugs = groq`*[_type == "post"] {slug}`;
 
-export const getAllSlugs = async () => {
+export const getAllSlugs = async (): Promise<IPost[]> => {
   return await client.fetch(queryAllSLugs);
 };

@@ -1,16 +1,16 @@
 import { useSWRInfinite } from "swr";
 import { PAGE_SIZE } from "../lib/vars";
-import { IAllPosts } from "../interfaces/IAllPosts";
+import { IPost } from "../interfaces/IPost";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const getKey = (index: number, previousPageData: IAllPosts[]) => {
+const getKey = (index: number, previousPageData: IPost[]) => {
   const offset = index * PAGE_SIZE;
 
   return `/api/posts?offset=${offset}`;
 };
 
-export const useGetPosts = (initialData: IAllPosts[][]) =>
+export const useGetPosts = (initialData: IPost[][]) =>
   useSWRInfinite(getKey, fetcher, { initialData });
 
 export const useGetPostsByCategory = (category) =>
